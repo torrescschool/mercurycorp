@@ -1,5 +1,5 @@
 body {
-    background-color:#EFEADE;
+    background-color:#fdf8ef;
 }
 header img {
     float: left;
@@ -7,11 +7,23 @@ header img {
 }
 header {
     text-align: center;
-    color: #363742;
+    color: #454a83;
     font-size: larger;
     padding: 40px;
 }
 
 h2{
     font-style: italic;
+}
+.content_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: right;
+    align-items: flex-end;
+    height: 200px;
+    width: 200px;
+    padding: 15px;
+    margin: 10px;
+    border-style: solid;
+    border-color: #FEFAE0;
 }
