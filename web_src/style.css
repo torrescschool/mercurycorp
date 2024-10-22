@@ -14,6 +14,7 @@ header {
 
 h2{
     font-style: italic;
+    text-align: center;
 }
 .content_section {
     display: flex;
@@ -34,12 +35,22 @@ a:hover {
 a:active {
     color: purple;
 }
-.intro{
-    width: 300px;
-    height: 300px;
-    background-color: white;
-    padding: 20px;
-    margin: 20px auto;
-    text-align: center;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+
+/*Styling for a thicker navigation bar*/
+.navbar{
+    background-color: rgb(133, 161,170);
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 20px;
 }
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+  h1{
+    font-size: 80px;
+  }
