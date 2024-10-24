@@ -29,7 +29,7 @@ h2{
     border-color: #FEFAE0;
 }
 a:hover {
-    color: aquamarine;
+    color: rgb(255, 255, 255);
 }
 
 a:active {
@@ -45,12 +45,18 @@ a:active {
     justify-content: space-around;
     font-size: 20px;
 }
+
 .abril-fatface-regular {
     font-family: "Abril Fatface", serif;
     font-weight: 400;
     font-style: normal;
   }
-
+ 
+.arima-subtitle {
+    font-family: "Arima", system-ui;
+    font-optical-sizing: auto;
+    font-weight: 500px;
+  }
   h1{
     font-size: 80px;
   }
