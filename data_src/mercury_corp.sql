@@ -73,7 +73,7 @@ PRIMARY KEY (rec_id),
 FOREIGN KEY (note_id) REFERENCES clinical_notes (note_id)
 );
 CREATE TABLE IF NOT EXISTS residential_sector(
-unit_id INT,
+unit_id INT NOT NULL AUTO_INCREMENT,
 unit varchar(100),
 phone INT,
 location varchar(100),
@@ -101,9 +101,56 @@ CREATE TABLE IF NOT EXISTS residents (
     FOREIGN KEY (unit_id) REFERENCES residential_sector(unit_id) 
 );
 CREATE TABLE IF NOT EXISTS login(
-id INT,
+id INT NOT NULL,
 username varchar(45),
 password varchar(60),
 role varchar(50),
 PRIMARY KEY(id)
 );
+
+INSERT INTO departments (dept_name) VALUES ("Physician");
+INSERT INTO departments (dept_name) VALUES ("Nursing");
+INSERT INTO departments (dept_name) VALUES ("Accounting");
+INSERT INTO departments (dept_name) VALUES ("HR");
+INSERT INTO departments (dept_name) VALUES ("Records");
+
+
+INSERT INTO employees
+(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+('Martin', 'Donna', 2122222222, '1990-03-05', 'HR Supervisor', 50000, 'donnam', 4, '12 Willow Road');
+
+INSERT INTO employees
+(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+('Beverly', 'Banks', 2124444444, '1995-09-07', 'Accountant', 40000, 'banksb', 3, '911 Market Street');
+
+INSERT INTO employees
+(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+('Daniel', 'Doe', 2178890000, '1986-03-05', 'CNA', 58000, 'doed', 2, '212 Willow Road');
+
+INSERT INTO employees
+(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+('Sophie', 'Collins', 2123333333, '1987-03-19', 'Physician', 70000, 'collinss', 1, '400 Baugher Avenue');
+
+INSERT INTO employees
+(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+('Mary', 'Fisher', 2134658907, '1989-03-24', 'Physician', 67000, 'fisherm', 1, '120 Baugher Avenue');
+
+INSERT INTO residential_sector
+(unit, phone, location)
+VALUES
+('Personal Care', 3133330000, 'East Wing');
+
+INSERT INTO residential_sector
+(unit, phone, location)
+VALUES
+('Independent Living', 3133339999, 'West Wing');
+
+INSERT INTO residential_sector
+(unit, phone, location)
+VALUES
+('Skilled Care', 3133330870, 'South Wing');
