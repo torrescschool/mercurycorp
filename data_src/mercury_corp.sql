@@ -9,7 +9,6 @@ PRIMARY KEY (care_id)
 CREATE TABLE IF NOT EXISTS departments(
 dept_id INT NOT NULL AUTO_INCREMENT,
 dept_name varchar(45),
-location varchar(45),
 PRIMARY KEY (dept_id)
 );
 CREATE TABLE IF NOT EXISTS employees(
@@ -18,6 +17,7 @@ first_name varchar(100) NOT NULL,
 last_name varchar(100) NOT NULL,
 mobile_no INT, 
 dob date,
+job_title varchar(100),
 salary float,
 email varchar(100),
 department_id INT,
@@ -73,10 +73,11 @@ PRIMARY KEY (rec_id),
 FOREIGN KEY (note_id) REFERENCES clinical_notes (note_id)
 );
 CREATE TABLE IF NOT EXISTS residential_sector(
-home_id INT,
-type varchar(100),
+unit_id INT,
+unit varchar(100),
 phone INT,
-PRIMARY KEY (home_id)
+location varchar(100),
+PRIMARY KEY (unit_id)
 );
 CREATE TABLE IF NOT EXISTS residents (
 	res_id INT NOT NULL AUTO_INCREMENT,
@@ -90,11 +91,19 @@ CREATE TABLE IF NOT EXISTS residents (
     emergency_contact INT NOT NULL,
     care_id INT,
     rec_id INT,
-    home_id INT,
+    unit_id INT,
+    address varchar (100),
     PRIMARY KEY (res_id),
     FOREIGN KEY (physician_id) REFERENCES physician (physician_id),
     FOREIGN KEY (account_id) REFERENCES accounting_record (account_id),
     FOREIGN KEY (care_id) REFERENCES care (care_id),
     FOREIGN KEY (rec_id) REFERENCES medical_records(rec_id),
-    FOREIGN KEY (home_id) REFERENCES residential_sector(home_id) 
+    FOREIGN KEY (unit_id) REFERENCES residential_sector(unit_id) 
+);
+CREATE TABLE IF NOT EXISTS login(
+id INT,
+username varchar(45),
+password varchar(60),
+role varchar(50),
+PRIMARY KEY(id)
 );
