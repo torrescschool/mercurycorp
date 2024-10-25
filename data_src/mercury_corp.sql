@@ -154,3 +154,51 @@ INSERT INTO residential_sector
 (unit, phone, location)
 VALUES
 ('Skilled Care', 3133330870, 'South Wing');
+
+INSERT INTO physician
+(first_name, last_name, emp_id, specialty)
+VALUES
+('Mary', 'Fisher', 5, 'Cardiology');
+
+INSERT INTO physician
+(first_name, last_name, emp_id, specialty)
+VALUES
+('Sophie', 'Collins', 4, 'Neurology');
+
+INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 800);
+INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 900);
+
+INSERT INTO CARE (notes) VALUES ('Likes to eat lunch at 12:00 noon.');
+INSERT INTO CARE (notes) VALUES ('Goes to bed at 8:00 pm with.');
+INSERT INTO Care (notes) VALUES ('Eats breakfast at 8:00 am.');
+
+INSERT INTO clinical_notes
+(current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note)
+VALUES
+('Peripheral Artery Disease', 'none','mediterranean diet', 'none',1, 'needs checked on regulary');
+
+INSERT INTO clinical_notes
+(current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note)
+VALUES
+('High Blood Pressure', 'none','grains', 'none',2, 'needs checked on regulary');
+
+INSERT INTO medical_records
+(medications, vaccinations, allergies, note_id, treatment)
+VALUES
+('Amlodipine', 'Flu', 'Nut', 1, 'XYZ');
+
+INSERT INTO medical_records
+(medications, vaccinations, allergies, note_id, treatment)
+VALUES
+('Amlodipine', 'HPV', 'Milk', 2, 'SAZ');
+
+INSERT INTO residents 
+(first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
+VALUES
+('John', 'Doe', '1995-09-09', '13 Malo Street', 1, 1, 238179900, 2126579999,1,1,1,'E');
+
+INSERT INTO residents 
+(first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
+VALUES
+('Joys', 'Munchkin', '1960-12-09', '13 Alpha Street', 2, 2, 238179900, 2126579999,2,2,1,'E');
+
