@@ -35,9 +35,6 @@ header {
 }
 
 .caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     color: white;
@@ -140,7 +137,7 @@ a:active {
     border: none;
     border-radius: 15px;
     cursor: pointer;
-    width: 150px;
+    width: 200px;
     height: 100px;
     text-align: center;
     display: inline-block
