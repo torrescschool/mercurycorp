@@ -1,3 +1,8 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
 body {
     background-color:#fdf8ef;
 }
@@ -11,41 +16,71 @@ header {
     font-size: larger;
     padding: 40px;
 }
-.left-image {
-    position: absolute;
-    left: -50px; /* Move slightly to the left of the white box */
-    top: -20px; /* Move slightly upward */
-    z-index: 0;
+/* Container Setup */
+.section-text {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex start;
+    flex-wrap: wrap; /* This will allow wrapping for smaller screens */
+    gap: 20px; /*Space between elements*/
+    padding: 20px;
 }
-  
-.right-image {
-    position: absolute;
-    right: -50px; /* Move slightly to the right of the white box */
-    bottom: -20px; /* Move slightly downward */
-    z-index: 0;
+/* White Box */
+.white-box{
+    position: relative;
+    background-color: white;
+    padding: 40px;
+    width: 500px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    z-index: 1;
 }
-
+/* Image Setup */
 .image-container {
     position: relative;
-    display: inline-block;
+    width: 200px; /*This will control the width as needed*/
 }
-.photo1 {
+.photo1, .photo2, .photo3, .photo4 {
     width: 100%;
-    height: auto
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
+/* The Overlapping Effect */
+.left-image {
+    position: relative;
+    top: -20px;
+}
+
+.right-image {
+    position: relative;
+    top: 20px;
+}
+
+/* Caption */
 .caption {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    padding: 5px;
     text-align: center;
     font-style: italic;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: -10px;
 }
+
+
+
 footer{
-    text-align: left;
-    font-size:small;
-    padding: 30px;
+    position: relative;
+    text-align: center;
+    font-size: small;
+    padding: 20px;
+    width: 100%;
+    z-index: 1;
+    margin-top: 20px; /* This adds a space above the footer*/
     background-color: rgb(210,196,212);
 }
 
@@ -68,13 +103,6 @@ h2{
 a:hover {
     color: rgb(255, 255, 255);
 } 
-.section-text {
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    padding: 40px;
-}
   
 .image-container {
     position: relative;
@@ -82,18 +110,11 @@ a:hover {
     height: 400px;
 }
   
-.photo1, .photo2 {
-    width: 90%;
-    height: auto;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-  
 .white-box {
     position: relative;
     background-color: white;
-    padding: 70px;
-    width: 400px;
+    padding: 80px;
+    width: 600px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 a:active {
@@ -121,9 +142,9 @@ a:active {
     font-optical-sizing: auto;
     font-weight: 500px;
   }
-  h1{
+h1{
     font-size: 80px;
-  }
+}
 .socialMediaIcon{
     width: 20px;
     height: 20px;
