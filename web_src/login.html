@@ -25,6 +25,7 @@
   <title>Mercury Corp - Software Engineering Final Project.</title>
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/d896ee4cb8.js" crossorigin="anonymous"></script>
+  
 </head>
 <body>
     <header class="row">
@@ -42,13 +43,25 @@
         <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Login</a>
       </nav>
       <h2 class = "arima-subtitle" font-stle:"italic"> Subtitle</h2>
+
+     
+
       <div id="intro" class="section-text col d-flex justify-content-center align-items-center" style="height: 900;">
         <div class="white-box text-center" style="background-color: white; padding: 70px; width: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-          <p>Login Page:
-            TODO:
-          <li> make login feature</li>
-          <li>when user logs in, have the view be set for the residents(Javascript, SQL) and have a front end indicator of that.</li>
-          <li>body font: Robot Condensed (Google API, download HTML/CSS)</li>
+          <div class="container mt-5">
+            <h2 class="text-center">Login to Mercury Corp</h2>
+            <form action="login_process.php" method="POST">
+              <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
         </div>
       </div>
     
