@@ -1,11 +1,14 @@
+/* HTML and Body: */
 body, html {
     height: 100%;
     margin: 0;
     overflow-x: hidden;
-}
-body {
     background-color:#fdf8ef;
 }
+main {
+    min-height: calc(100vh - 150px);
+}
+/* Header: */
 header img {
     float: left;
     width: 100px;
@@ -15,6 +18,18 @@ header {
     color: #262a58;
     font-size: larger;
     padding: 40px;
+}
+/* Introduction Setup Layout: */
+#intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; 
+    gap: 20px;
+    padding: 20px;
+    margin: 20px 0 60px 0;
+    max-width: 100%;
+    flex-wrap: wrap;
 }
 /* Container Setup */
 .section-text {
@@ -26,9 +41,9 @@ header {
     gap: 20px; /*Space between elements*/
     padding: 20px;
 }
+
 /* White Box */
 .white-box{
-    position: relative;
     background-color: white;
     padding: 40px;
     width: 500px;
@@ -38,13 +53,13 @@ header {
 }
 /* Image Setup */
 .image-container {
-    position: relative;
-    width: 200px; /*This will control the width as needed*/
+    flex-basis: calc(50% - 20px);
+    text-align: center;
 }
-.photo1, .photo2, .photo3, .photo4 {
+.photo1, .photo2, .photo3, .photo4{
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    max-width: 300px; 
     margin-bottom: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
@@ -71,15 +86,11 @@ header {
     margin-top: -10px;
 }
 
-
-
 footer{
-    position: relative;
     text-align: center;
     font-size: small;
     padding: 20px;
     width: 100%;
-    z-index: 1;
     margin-top: 20px; /* This adds a space above the footer*/
     background-color: rgb(210,196,212);
 }
