@@ -13,10 +13,11 @@ PRIMARY KEY (dept_id)
 );
 CREATE TABLE IF NOT EXISTS medical_records(
 rec_id INT NOT NULL auto_increment,
-medications varchar(100),
+res_id int,
 vaccinations varchar(100),
 allergies varchar(100),
-treatment varchar(100),
+admission_date DATE,
+discharge_date DATE,
 PRIMARY KEY (rec_id)
 );
 CREATE TABLE IF NOT EXISTS employees(
@@ -45,10 +46,10 @@ FOREIGN KEY (emp_id) REFERENCES employees (emp_id)
 CREATE TABLE IF NOT EXISTS clinical_notes(
 note_id INT NOT NULL AUTO_INCREMENT,
 current_illness varchar(100),
-medication_refusal varchar(100),
+medication_refusal BOOLEAN,
 diet_plan varchar(100),
 emergency_calls varchar(100),
-hospice BOOLEAN,
+ishospice BOOLEAN,
 physician_id INT,
 note longtext,
 rec_id INT,
@@ -56,6 +57,32 @@ PRIMARY KEY (note_id),
 FOREIGN KEY (physician_id) REFERENCES physician (physician_id),
 FOREIGN KEY (rec_id) REFERENCES medical_records (rec_id)
 );
+
+-- physician order 
+CREATE TABLE IF NOT EXISTS physician_orders(
+order_id INT AUTO_INCREMENT,
+record_id INT,
+order_date DATE,
+order_text longtext,
+physician_id INT,
+PRIMARY KEY (order_id),
+FOREIGN KEY (rec_id) REFERENCES MedicalRecords(rec_id)
+FOREIGN KEY (physician_id) REFERENCES physician (physician_id)
+)
+-- med/treatment table
+CREATE TABLE IF NOT EXISTS meds_treats(
+type_id INT AUTO_INCREMENT,
+type_name varchar(50)
+emp_id INT
+datetime_given DATETIME,
+notes varchar(100),
+medication_refused BOOLEAN
+order_id INT,
+PRIMARY KEY (type_id)
+FOREIGN KEY (order_id) REFERENCES physicianorders(order_id)
+FOREIGN KEY (emp_id) REFERENCES employees (emp_id)
+);
+
 CREATE TABLE IF NOT EXISTS accounting_record(
 account_id INT NOT NULL AUTO_INCREMENT,
 insurance varchar(45) NOT NULL,
@@ -187,12 +214,12 @@ VALUES
 INSERT INTO clinical_notes
 (current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note, rec_id)
 VALUES
-('Peripheral Artery Disease', 'none','mediterranean diet', 'none',104, 'needs checked on regulary', 1);
+('Peripheral Artery Disease', 'FALSE','mediterranean diet', 'none',104, 'needs checked on regulary', 1);
 
 INSERT INTO clinical_notes
 (current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note, rec_id)
 VALUES
-('High Blood Pressure', 'none','grains', 'none',103, 'needs checked on regulary', 2);
+('High Blood Pressure', 'FALSE','grains', 'none',103, 'needs checked on regulary', 2);
 
 
 INSERT INTO residents 
