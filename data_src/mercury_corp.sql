@@ -2,17 +2,17 @@ create database mercurycorp;
 use mercurycorp;
 
 CREATE TABLE IF NOT EXISTS care(
-care_id INT NOT NULL AUTO_INCREMENT,
+care_id INT NOT NULL auto_increment ,
 notes longtext,
 PRIMARY KEY (care_id)
 );
 CREATE TABLE IF NOT EXISTS departments(
-dept_id INT NOT NULL AUTO_INCREMENT,
+dept_id INT NOT NULL auto_increment,
 dept_name varchar(45),
 PRIMARY KEY (dept_id)
 );
 CREATE TABLE IF NOT EXISTS medical_records(
-rec_id INT NOT NULL AUTO_INCREMENT,
+rec_id INT NOT NULL auto_increment,
 medications varchar(100),
 vaccinations varchar(100),
 allergies varchar(100),
@@ -20,23 +20,23 @@ treatment varchar(100),
 PRIMARY KEY (rec_id)
 );
 CREATE TABLE IF NOT EXISTS employees(
-emp_id INT NOT NULL AUTO_INCREMENT,
+emp_id INT NOT NULL,
 first_name varchar(100) NOT NULL,
 last_name varchar(100) NOT NULL,
 mobile_no INT, 
 dob date,
 job_title varchar(100),
 salary float,
-email varchar(100),
+email  varchar(100) NOT NULL,
 department_id INT,
 address varchar(200),
 PRIMARY KEY (emp_id),
 FOREIGN KEY (department_id) REFERENCES departments(dept_id)
 );
 CREATE TABLE IF NOT EXISTS physician(
-physician_id INT NOT NULL AUTO_INCREMENT,
-first_name varchar(100),
-last_name varchar(100),
+physician_id INT NOT NULL ,
+first_name varchar(100) NOT NULL,
+last_name varchar(100) NOT NULL,
 emp_id INT, 
 specialty varchar(45),
 PRIMARY KEY (physician_id),
@@ -81,7 +81,7 @@ location varchar(100),
 PRIMARY KEY (unit_id)
 );
 CREATE TABLE IF NOT EXISTS residents (
-	res_id INT NOT NULL AUTO_INCREMENT,
+	res_id CHAR(35) NOT NULL ,
     first_name varchar(100) NOT NULL,
     last_name varchar(100) NOT NULL,
     dob date,
@@ -101,12 +101,13 @@ CREATE TABLE IF NOT EXISTS residents (
     FOREIGN KEY (rec_id) REFERENCES medical_records(rec_id),
     FOREIGN KEY (unit_id) REFERENCES residential_sector(unit_id) 
 );
-CREATE TABLE IF NOT EXISTS login(
-id INT NOT NULL,
-username varchar(45),
-password varchar(60),
-role varchar(50),
-PRIMARY KEY(id)
+CREATE TABLE Users (
+    user_id int auto_increment,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
+    role ENUM('resident', 'employee', 'physician') NOT NULL,  
+    linked_id CHAR(36) NOT NULL ,
+    PRIMARY KEY (user_id)
 );
 
 INSERT INTO departments (dept_name) VALUES ("Physician");
@@ -117,29 +118,29 @@ INSERT INTO departments (dept_name) VALUES ("Records");
 
 
 INSERT INTO employees
-(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+(emp_id, first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
 VALUES
-('Martin', 'Donna', 2122222222, '1990-03-05', 'HR Supervisor', 50000, 'donnam', 4, '12 Willow Road');
+(100,'Martin', 'Donna', 2122222222, '1990-03-05', 'HR Supervisor', 50000, 'donnam', 4, '12 Willow Road');
 
 INSERT INTO employees
-(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
 VALUES
-('Beverly', 'Banks', 2124444444, '1995-09-07', 'Accountant', 40000, 'banksb', 3, '911 Market Street');
+(101, 'Beverly', 'Banks', 2124444444, '1995-09-07', 'Accountant', 40000, 'banksb', 3, '911 Market Street');
 
 INSERT INTO employees
-(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
 VALUES
-('Daniel', 'Doe', 2178890000, '1986-03-05', 'CNA', 58000, 'doed', 2, '212 Willow Road');
+(102,'Daniel', 'Doe', 2178890000, '1986-03-05', 'CNA', 58000, 'doed', 2, '212 Willow Road');
 
 INSERT INTO employees
-(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
 VALUES
-('Sophie', 'Collins', 2123333333, '1987-03-19', 'Physician', 70000, 'collinss', 1, '400 Baugher Avenue');
+(103,'Sophie', 'Collins', 2123333333, '1987-03-19', 'Physician', 70000, 'collinss', 1, '400 Baugher Avenue');
 
 INSERT INTO employees
-(first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
 VALUES
-('Mary', 'Fisher', 2134658907, '1989-03-24', 'Physician', 67000, 'fisherm', 1, '120 Baugher Avenue');
+(104,'Mary', 'Fisher', 2134658907, '1989-03-24', 'Physician', 67000, 'fisherm', 1, '120 Baugher Avenue');
 
 INSERT INTO residential_sector
 (unit, phone, location)
@@ -157,14 +158,14 @@ VALUES
 ('Skilled Care', 3133330870, 'South Wing');
 
 INSERT INTO physician
-(first_name, last_name, emp_id, specialty)
+(physician_id, first_name, last_name, emp_id, specialty)
 VALUES
-('Mary', 'Fisher', 5, 'Cardiology');
+(104, 'Mary', 'Fisher', 104, 'Cardiology');
 
 INSERT INTO physician
-(first_name, last_name, emp_id, specialty)
+(physician_id,first_name, last_name, emp_id, specialty)
 VALUES
-('Sophie', 'Collins', 4, 'Neurology');
+(103,'Sophie', 'Collins', 103, 'Neurology');
 
 INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 800);
 INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 900);
@@ -186,21 +187,23 @@ VALUES
 INSERT INTO clinical_notes
 (current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note, rec_id)
 VALUES
-('Peripheral Artery Disease', 'none','mediterranean diet', 'none',1, 'needs checked on regulary', 1);
+('Peripheral Artery Disease', 'none','mediterranean diet', 'none',104, 'needs checked on regulary', 1);
 
 INSERT INTO clinical_notes
 (current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note, rec_id)
 VALUES
-('High Blood Pressure', 'none','grains', 'none',2, 'needs checked on regulary', 2);
+('High Blood Pressure', 'none','grains', 'none',103, 'needs checked on regulary', 2);
 
 
 INSERT INTO residents 
-(first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
+(res_id,first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
 VALUES
-('John', 'Doe', '1995-09-09', '13 Malo Street', 1, 1, 238179900, 2126579999,1,1,1,'E');
+('R001','John', 'Doe', '1995-09-09', '13 Malo Street', 104, 1, 238179900, 2126579999,1,1,1,'E');
 
 INSERT INTO residents 
-(first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
+(res_id,first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
 VALUES
-('Joys', 'Munchkin', '1960-12-09', '13 Alpha Street', 2, 2, 238179900, 2126579999,2,2,1,'E');
+('R002','Joys', 'Munchkin', '1960-12-09', '13 Alpha Street', 103, 2, 238179900, 2126579999,2,2,1,'E');
 
+ALTER TABLE employees
+ADD CONSTRAINT unique_email UNIQUE (email);
