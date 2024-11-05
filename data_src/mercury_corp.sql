@@ -101,7 +101,7 @@ CREATE TABLE IF NOT EXISTS residents (
     FOREIGN KEY (rec_id) REFERENCES medical_records(rec_id),
     FOREIGN KEY (unit_id) REFERENCES residential_sector(unit_id) 
 );
-CREATE TABLE Users (
+CREATE TABLE users (
     user_id int auto_increment,
     username VARCHAR(50) UNIQUE NOT NULL,
     password_hash VARCHAR(255) NOT NULL,
@@ -207,3 +207,9 @@ VALUES
 
 ALTER TABLE employees
 ADD CONSTRAINT unique_email UNIQUE (email);
+
+ALTER TABLE users
+CHANGE password_hash password VARCHAR(255);
+
+ALTER TABLE users
+CHANGE linked_id id char(36);
