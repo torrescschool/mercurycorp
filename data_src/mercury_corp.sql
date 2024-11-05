@@ -48,7 +48,7 @@ current_illness varchar(100),
 medication_refusal varchar(100),
 diet_plan varchar(100),
 emergency_calls varchar(100),
-hospice varchar(100),
+hospice BOOLEAN,
 physician_id INT,
 note longtext,
 rec_id INT,
@@ -175,14 +175,14 @@ INSERT INTO CARE (notes) VALUES ('Goes to bed at 8:00 pm with.');
 INSERT INTO Care (notes) VALUES ('Eats breakfast at 8:00 am.');
 
 INSERT INTO medical_records
-(medications, vaccinations, allergies, treatment)
+(vaccinations, allergies)
 VALUES
-('Amlodipine', 'Flu', 'Nut','XYZ');
+('Flu', 'Nut');
 
 INSERT INTO medical_records
-(medications, vaccinations, allergies,  treatment)
+(vaccinations, allergies)
 VALUES
-('Amlodipine', 'HPV', 'Milk',  'SAZ');
+('HPV', 'Milk');
 
 INSERT INTO clinical_notes
 (current_illness,medication_refusal,diet_plan, emergency_calls, physician_id, note, rec_id)
