@@ -47,15 +47,68 @@
           <p class = "nurse-view">
             <h2 class = "roboto-bold">Patient List:</h2>
             <ul>
-              <li><a href = "www.example.com">Patient A (Last Name, First Name, ID)</a></li>
-              <li><a href = "www.example.com">Patient B (Last Name, First Name, ID)</a></li>
-              <li> <a href = "www.example.com">Patient C (Last Name, First Name, ID)</a></li>
-              <li> <a href = "www.example.com">Patient D (Last Name, First Name, ID)</a></li>
+              <li onclick = "toggleInfo('info1')"> 
+                Brown, Michael, ID: 089786756
+                <div id = "info1" class = "patient-info">
+                  <p class = "roboto-black-italic">Michael Brown</p>
+                  <p>Date of Birth: 09/18/1988</p>
+                  <p>Height: 6'2"</p>
+                  <p>Weight: 200lbs</p>
+                  <a href = "medical_records/michael_brown.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                  </a>
+                </div>
+              </li>
+              <li onclick = "toggleInfo('info2')"> 
+                Davis, Emily, ID: 987654321
+                <div id = "info1" class = "patient-info">
+                  <p class = "roboto-black-italic">Emily Davis</p>
+                  <p>Date of Birth: 03/10/2000</p>
+                  <p>Height: 5'4"</p>
+                  <p>Weight: 120lbs</p>
+                  <a href = "medical_records/emily_davis.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                  </a>
+                </div>
+              </li>
+              <li onclick = "toggleInfo('info3')"> 
+                Doe, John, ID: 123456789
+                <div id = "info1" class = "patient-info">
+                  <p class = "roboto-black-italic">John Doe</p>
+                  <p>Date of Birth: 01/15/1985</p>
+                  <p>Height: 5'9"</p>
+                  <p>Weight: 150lbs</p>
+                  <a href = "medical_records/john_doe.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                  </a>
+                </div>
+              </li>
+              <li onclick = "toggleInfo('info4')"> 
+                Green, Samuel, ID: 567474632
+                <div id = "info1" class = "patient-info">
+                  <p class = "roboto-black-italic" font-size: 20pt>Samuel Green</p>
+                  <p>Date of Birth: 10/30/1976</p>
+                  <p>Height: 5'11"</p>
+                  <p>Weight: 180lbs</p>
+                  <a href = "medical_records/samuel_green.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                  </a>
+                </div>
+              </li>
+              <li onclick = "toggleInfo('info5')"> 
+                Johnson, Mary, ID: 314253647
+                <div id = "info1" class = "patient-info">
+                  <p class = "roboto-black-italic">Mary Johnson</p>
+                  <p>Date of Birth: 07/22/1992</p>
+                  <p>Height: 5'5"</p>
+                  <p>Weight: 135lbs</p>
+                  <a href = "medical_records/mary_johnson.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                  </a>
+                </div>
+              </li>
             </ul>
             <ul>
-              <li>add PDF creator</li>
-              <li>make it look nice</li>
-              <li> Create Drop down</li>
               <li> blue outside the white box saying "Nurse View"</li>
             </ul>
           </p>
