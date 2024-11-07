@@ -240,3 +240,17 @@ CHANGE password_hash password VARCHAR(255);
 
 ALTER TABLE users
 CHANGE linked_id id char(36);
+
+ALTER TABLE physician
+ADD COLUMN email VARCHAR(255) NOT NULL;
+
+UPDATE physician
+SET email = 'collinss'
+WHERE physician_id = 103;
+
+UPDATE physician
+SET email = 'fisherm'
+WHERE physician_id = 104;
+
+alter table users
+modify COLUMN role varchar(25);
