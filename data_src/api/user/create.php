@@ -1,8 +1,15 @@
 <?php
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 include('../../includes/db_config.php');  // Include the database connection
 // include('../includes/auth.php');    // Ensure the user is logged in
 // Create database connection 
 $mysqli = new mysqli($host, $dbUsername, $dbPassword, $database);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
+} else {
+    echo "Database connection successful.<br>";
+}
 
 // Check if the user is authorized to access this page (HR, IT in the future)
 // if (!isHR()) {
@@ -15,52 +22,114 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
     $id = $_POST['id'];
-    $role = $_POST['role'];
-
     // Hash the password for security
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-    
+    // Initialize the role variable
+    $role = null;
 
-    if ($mysqli->connect_error) {
-        die("Connection failed: " . $mysqli->connect_error);
-    }
-
-    if (!isset($username, $password,$id, $role)) {
-        exit('Please complete the registration form!');
-    }
-
-    // Check if the username already exists
-    $stmt = $mysqli->prepare("SELECT COUNT(*) FROM Users WHERE username = ?");
+    // Step 1: Check if the username already exists in the users table
+    $checkUserSql = "SELECT * FROM users WHERE username = ?";
+    $stmt = $mysqli->prepare($checkUserSql);
     $stmt->bind_param("s", $username); // Bind the username parameter
     $stmt->execute();
-    $stmt->bind_result($count);
-    $stmt->fetch();
-    $stmt->close();
+    $result = $stmt->get_result();
 
-    if ($count > 0) {
-        // Username already exists
-        $error = "Username already exists. Please choose a different username.";
+    if ($result->num_rows > 0) {
+        // If the username already exists, show an error
+        $error = "An account already exists for this username.";
+        echo $error . "<br>";
     } else {
-        // Prepare the INSERT statement
-        $stmt = $mysqli->prepare("INSERT INTO Users (username, password, role, id) VALUES (?, ?, ?, ?)");
-        if ($stmt) {
-            $stmt->bind_param("ssss", $username, $hashedPassword, $role, $id); // Bind parameters
-            
-            // Execute the statement and check for success
-            if ($stmt->execute()) {
-                $success = "User successfully created!";
-                header("Location: ../../../web_src/login.html");
+        // Step 2: Determine the role based on the ID
+        // Check if the id exists in the residents table
+        // $sqlResident = "SELECT * FROM residents WHERE res_id = ? AND email = ?";
+        // $stmtResident = $mysqli->prepare($sqlResident);
+        // $stmtResident->bind_param("ss", $id, $username);
+        // $stmtResident->execute();
+        // $resultResident = $stmtResident->get_result();
+
+        // if ($resultResident->num_rows > 0) {
+        //     $role = 'resident';
+        // } else {
+            // Check if the id exists in the physicians table
+            $sqlPhysician = "SELECT * FROM physician WHERE physician_id = ? AND email = ?";
+            $stmtPhysician = $mysqli->prepare($sqlPhysician);
+            // debug
+            // if (!$stmtPhysician) {
+            //     echo "Error preparing statement: " . $mysqli->error . "<br>";
+            // } else {
+            //     echo "Prepared statement successfully created.<br>";
+            // }
+
+            // echo "ID: $id, Username: $username<br>";
+            $stmtPhysician->bind_param("is", $id, $username);
+            $stmtPhysician->execute();
+            // Debugging: Check if execution was successful
+            // if ($stmtPhysician->error) {
+            //     echo "Error executing query: " . $stmtPhysician->error . "<br>";
+            // } else {
+            //     echo "Query executed successfully.<br>";
+            // }
+            $resultPhysician = $stmtPhysician->get_result();
+            var_dump($resultPhysician); // Check if the result object contains any rows
+
+            if ($resultPhysician->num_rows > 0) {
+                $role = 'physician';
+                echo "Role set to: $role<br>";
             } else {
-                $error = "Error: " . $stmt->error; // Use statement error
+                echo "No match found in the physician table for ID: $id and email: $username.<br>";//debug
+                // Check if the id exists in the employees table and get department name
+                $sqlEmployeeDept = "SELECT e.emp_id, e.email, e.department_id, d.dept_name
+                                    FROM employees e
+                                    JOIN departments d ON e.department_id = d.dept_id
+                                    WHERE e.emp_id = ? AND e.email = ?";
+                $stmtDept = $mysqli->prepare($sqlEmployeeDept);
+                $stmtDept->bind_param("is", $id, $username);
+                echo "ID: $id, Username: $username<br>"; // debug
+                $stmtDept->execute();
+                $resultDept = $stmtDept->get_result();
+
+                if ($resultDept->num_rows > 0) {
+                    // Fetch the department name
+                    $row = $resultDept->fetch_assoc();
+                    echo "Row Data: ";
+                    print_r($row);
+                    echo "<br>";
+                    $role = $row['dept_name']; // Assign department name as role
+                    echo "Assigned Role: $role<br>"; // Debugging statement
+                }else {
+                    echo "No department found matching ID: $id and email: $username.<br>"; //debugging statement
+                }
             }
-            $stmt->close();
+        }
+        // Debug statement to confirm role before insert
+        if ($role) {
+            echo "Role ready for insert: $role<br>";
         } else {
-            $error = "Error preparing the statement: " . $mysqli->error;
+            echo "Role is not set before insert.<br>";
+        }
+        // Step 3: If a valid role is determined, insert the new user into the users table
+        if ($role) {
+            echo "Role ready for insert in if statement: $role<br>";
+            $insertUserSql = "INSERT INTO users (username, password, role, id) VALUES (?, ?, ?, ?)";
+            $stmtInsert = $mysqli->prepare($insertUserSql);
+            $stmtInsert->bind_param("ssss", $username, $hashedPassword, $role, $id); // Use "i" for id if it's integer
+
+            if ($stmtInsert->execute()) {
+                echo "User successfully created with role: $role<br>";
+            } else{
+                echo "Error during insert: " . $stmtInsert->error  . "<br>";
+            }
+
+            $stmtDept->close();
+            $stmtInsert->close();
+        } else {
+            $error = "The ID and Username do not match any known role.";
+            echo $error . "<br>";
         }
     }
 
-}
+
  ?>
 
 <!DOCTYPE html>
@@ -85,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arima:wght@100..700&display=swap" rel="stylesheet">
   <!-- JavaScript Source-->
-  <script src="main.js"></script>
+  <!-- <script src="main.js"></script> -->
   <title>Mercury Corp - Software Engineering Final Project.</title>
   <!--Font Awesome-->
   <script src="https://kit.fontawesome.com/d896ee4cb8.js" crossorigin="anonymous"></script>
@@ -101,7 +170,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       </header>      
       <nav class="navbar" style="background-color: rgb(133, 161,170); height: 70px">
         <!-- Navbar content -->
-        <a id = "nav-bar options" href = "index.html" class = "arima-subtitle">Home</a>
+        <a id = "nav-bar options" href = "../../../web_src/index.html" class = "arima-subtitle">Home</a>
         <!-- <a id = "nav-bar options" href = "Residents.html" class = "arima-subtitle">Residents</a>
         <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Login</a> -->
       </nav>
@@ -120,25 +189,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <input type="password" id="password" name="password" class="form-control" required>
                 </div>
 
-                <div class="form-group mb-3">
-                    <label for="role" class="form-label"><strong>Role:</strong></label>
-                    <select id="role" name="role" class="form-select" required>
-                        <option value="" disabled selected>Select a role</option>
-                        <option value="resident">Resident</option>
-                        <option value="hr">Physician</option>
-                        <option value="employee">Employee</option>
-                    </select>
-                </div>
-
                 <div class="form-group mb-4">
                     <label for="id" class="form-label"><strong>Enter Resident/Employee Identifying Number:</strong></label>
                     <input type="text" id="id" name="id" class="form-control" required>
                 </div>
         
-                <button type="submit" class="btn btn-primary w-100">Create User</button>
+                <button type="submit" class="btn btn-primary w-100" >Create User</button>
 
-                <?php if (isset($success)) echo "<p class='text-success mt-3'>$success</p>"; ?>
-                <?php if (isset($error)) echo "<p class='text-danger mt-3'>$error</p>"; ?>
+                
             </form>
         </div>
     </div>
