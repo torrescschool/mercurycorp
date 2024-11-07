@@ -5,17 +5,6 @@ include('../../includes/db_config.php');  // Include the database connection
 // include('../includes/auth.php');    // Ensure the user is logged in
 // Create database connection 
 $mysqli = new mysqli($host, $dbUsername, $dbPassword, $database);
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-} else {
-    echo "Database connection successful.<br>";
-}
-
-// Check if the user is authorized to access this page (HR, IT in the future)
-// if (!isHR()) {
-//     header("Location: /views/login.php");
-//     exit;
-// }
 
 // Handle form submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -41,25 +30,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         echo $error . "<br>";
     } else {
         // Step 2: Determine the role based on the ID
-        // Check if the id exists in the residents table
-        // $sqlResident = "SELECT * FROM residents WHERE res_id = ? AND email = ?";
-        // $stmtResident = $mysqli->prepare($sqlResident);
-        // $stmtResident->bind_param("ss", $id, $username);
-        // $stmtResident->execute();
-        // $resultResident = $stmtResident->get_result();
-
-        // if ($resultResident->num_rows > 0) {
-        //     $role = 'resident';
-        // } else {
+        
             // Check if the id exists in the physicians table
             $sqlPhysician = "SELECT * FROM physician WHERE physician_id = ? AND email = ?";
             $stmtPhysician = $mysqli->prepare($sqlPhysician);
-            // debug
-            // if (!$stmtPhysician) {
-            //     echo "Error preparing statement: " . $mysqli->error . "<br>";
-            // } else {
-            //     echo "Prepared statement successfully created.<br>";
-            // }
 
             // echo "ID: $id, Username: $username<br>";
             $stmtPhysician->bind_param("is", $id, $username);
@@ -71,13 +45,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             //     echo "Query executed successfully.<br>";
             // }
             $resultPhysician = $stmtPhysician->get_result();
-            var_dump($resultPhysician); // Check if the result object contains any rows
+            // var_dump($resultPhysician); // Check if the result object contains any rows
 
             if ($resultPhysician->num_rows > 0) {
                 $role = 'physician';
-                echo "Role set to: $role<br>";
+                // echo "Role set to: $role<br>";
             } else {
-                echo "No match found in the physician table for ID: $id and email: $username.<br>";//debug
+                // echo "No match found in the physician table for ID: $id and email: $username.<br>";//debug
                 // Check if the id exists in the employees table and get department name
                 $sqlEmployeeDept = "SELECT e.emp_id, e.email, e.department_id, d.dept_name
                                     FROM employees e
@@ -85,40 +59,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                     WHERE e.emp_id = ? AND e.email = ?";
                 $stmtDept = $mysqli->prepare($sqlEmployeeDept);
                 $stmtDept->bind_param("is", $id, $username);
-                echo "ID: $id, Username: $username<br>"; // debug
+                // echo "ID: $id, Username: $username<br>"; // debug
                 $stmtDept->execute();
                 $resultDept = $stmtDept->get_result();
 
                 if ($resultDept->num_rows > 0) {
                     // Fetch the department name
                     $row = $resultDept->fetch_assoc();
-                    echo "Row Data: ";
-                    print_r($row);
-                    echo "<br>";
+                    // echo "Row Data: ";
+                    // print_r($row);
+                    // echo "<br>";
                     $role = $row['dept_name']; // Assign department name as role
-                    echo "Assigned Role: $role<br>"; // Debugging statement
+                    // echo "Assigned Role: $role<br>"; // Debugging statement
                 }else {
                     echo "No department found matching ID: $id and email: $username.<br>"; //debugging statement
                 }
             }
         }
         // Debug statement to confirm role before insert
-        if ($role) {
-            echo "Role ready for insert: $role<br>";
-        } else {
-            echo "Role is not set before insert.<br>";
-        }
+        // if ($role) {
+        //     echo "Role ready for insert: $role<br>";
+        // } else {
+        //     echo "Role is not set before insert.<br>";
+        // }
         // Step 3: If a valid role is determined, insert the new user into the users table
         if ($role) {
-            echo "Role ready for insert in if statement: $role<br>";
+            // echo "Role ready for insert in if statement: $role<br>";
             $insertUserSql = "INSERT INTO users (username, password, role, id) VALUES (?, ?, ?, ?)";
             $stmtInsert = $mysqli->prepare($insertUserSql);
             $stmtInsert->bind_param("ssss", $username, $hashedPassword, $role, $id); // Use "i" for id if it's integer
 
             if ($stmtInsert->execute()) {
-                echo "User successfully created with role: $role<br>";
+                echo "User successfully created.";
             } else{
-                echo "Error during insert: " . $stmtInsert->error  . "<br>";
+                echo "Please enter a valid username and id";
+                // echo "Error during insert: " . $stmtInsert->error  . "<br>";
             }
 
             $stmtDept->close();

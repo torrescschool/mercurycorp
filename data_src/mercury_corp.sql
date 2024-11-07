@@ -169,6 +169,16 @@ INSERT INTO employees
 VALUES
 (104,'Mary', 'Fisher', 2134658907, '1989-03-24', 'Physician', 67000, 'fisherm', 1, '120 Baugher Avenue');
 
+INSERT INTO employees
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+(105,'Mandy', 'Oliver', 3331222222, '1987-03-24', 'HR', 50000, 'oliverm', 4, '190 Baugher Avenue');
+
+INSERT INTO employees
+(emp_id,first_name, last_name,mobile_no,dob,job_title,salary,email,department_id,address)
+VALUES
+(106,'Alex', 'Tide', 3331234522, '1987-03-24', 'HR', 50000, 'tideam', 4, '190 Baugher Avenue');
+
 INSERT INTO residential_sector
 (unit, phone, location)
 VALUES
