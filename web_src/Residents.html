@@ -61,7 +61,7 @@
               </li>
               <li onclick = "toggleInfo('info2')"> 
                 Davis, Emily, ID: 987654321
-                <div id = "info1" class = "patient-info">
+                <div id = "info2" class = "patient-info">
                   <p class = "roboto-black-italic">Emily Davis</p>
                   <p>Date of Birth: 03/10/2000</p>
                   <p>Height: 5'4"</p>
@@ -73,7 +73,7 @@
               </li>
               <li onclick = "toggleInfo('info3')"> 
                 Doe, John, ID: 123456789
-                <div id = "info1" class = "patient-info">
+                <div id = "info3" class = "patient-info">
                   <p class = "roboto-black-italic">John Doe</p>
                   <p>Date of Birth: 01/15/1985</p>
                   <p>Height: 5'9"</p>
@@ -85,7 +85,7 @@
               </li>
               <li onclick = "toggleInfo('info4')"> 
                 Green, Samuel, ID: 567474632
-                <div id = "info1" class = "patient-info">
+                <div id = "info4" class = "patient-info">
                   <p class = "roboto-black-italic" font-size: 20pt>Samuel Green</p>
                   <p>Date of Birth: 10/30/1976</p>
                   <p>Height: 5'11"</p>
@@ -97,7 +97,7 @@
               </li>
               <li onclick = "toggleInfo('info5')"> 
                 Johnson, Mary, ID: 314253647
-                <div id = "info1" class = "patient-info">
+                <div id = "info5" class = "patient-info">
                   <p class = "roboto-black-italic">Mary Johnson</p>
                   <p>Date of Birth: 07/22/1992</p>
                   <p>Height: 5'5"</p>
@@ -114,7 +114,6 @@
           </p>
           <p class = "patient-view">
             <h2 class = "roboto-bold">Here is your Daily Schedule:</h2>
-            <ul>
               <li>add PDF creator</li>
               <li>make it look nice</li>
               <li>purple outside the white box saying "Patient View"</li>
@@ -123,6 +122,23 @@
           </p>
           <p class = "hr-view">
             <h2 class = "roboto-bold">Nurses: </h2>
+            <ul>
+              <ul class = "left-centered-list">
+                <li onclick = "toggleInfo(info8)">
+                Torres, Camilla, ID: 111111111
+                <div id = "info7" class = "nurse-info">
+                  <p class = "roboto-black-italic"> Camilla Torres</p>
+                <p>Date of Birth: 05/20/2002 </p>
+                <p>Date Hired: 10/01/2024</p>
+                <p class = "roboto-bold">Patients Assigned</p>
+                <li>Brown, Michael, ID: 089786756</li>
+                <li>Davis, Emily, ID: 987654321</li>
+                <li>Doe, John, ID: 123456789</li>
+                <li>Green, Samuel, ID: 567474632</li>
+                <li>Johnson, Mary, ID: 314253647</li>
+                </li>
+                </div>
+            </ul>
             <li><a href = "www.example.com"> Nurse A (Last Name, First Name, ID)</a>Nurse A(Last Name, first name, ID)</li>
             <li><a href = "www.example.com"> Nurse B (Last Name, First Name, ID)</a></li>
             <li><a href = "www.example.com"> Nurse C (Last Name, First Name, ID)</a></li>

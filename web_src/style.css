@@ -291,3 +291,15 @@ h1{
     margin-top: 8px;
     padding-left: 10px;
 }
+ /* Left Centered Alignment*/
+ .left-centered-list {
+    list-style-position: inside; /* Places bullets inside the list container */
+    padding-left: 0;             /* Removes default padding */
+    text-align: center;          /* Centers text within the container */
+}
+
+.left-centered-list li {
+    display: inline-block;       /* Allows each list item to act as a block */
+    text-align: left;            /* Aligns text inside the list item to the left */
+    width: 100%;                 /* Ensures each item spans the container width */
+}
