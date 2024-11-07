@@ -1,70 +1,84 @@
-/* HTML and Body: */
+/* Global settings */
 body, html {
     height: 100%;
     margin: 0;
     overflow-x: hidden;
-    background-color:#fdf8ef;
+    font-family: "Roboto", sans-serif;
+    background-color: #fdf8ef;
 }
-main {
-    min-height: calc(100vh - 150px);
-}
-/* Header: */
-header img {
-    float: left;
-    width: 100px;
-}
+
+/* Header styling */
 header {
-    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #262a58;
     font-size: larger;
     padding: 40px;
+    text-align: center;
 }
-/* Introduction Setup Layout: */
-#intro {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 20px;
-    padding: 20px;
-    margin: 20px 0 60px 0;
-    max-width: 100%;
-    flex-wrap: wrap;
+
+header img {
+    width: 100px;
+    margin-right: 20px;
 }
-/* Container Setup */
-.section-text {
-    position: relative;
-    display: flex;
-    justify-content: space-around;
-    align-items: flex start;
-    flex-wrap: wrap; /* This will allow wrapping for smaller screens */
-    gap: 20px; /*Space between elements*/
+
+/* Main content area styling */
+main {
+    min-height: calc(100vh - 150px);
     padding: 20px;
 }
 
-/* White Box */
-.white-box{
+/* Section styling */
+.section-text {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Intro section styling */
+#intro {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    margin: 40px 0;
+    padding-bottom: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* White Box styling */
+.white-box {
     background-color: white;
     padding: 40px;
     width: 500px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     text-align: left;
     z-index: 1;
-}
-/* Image Setup */
-.image-container {
-    flex-basis: calc(50% - 20px);
-    text-align: center;
-}
-.photo1, .photo2, .photo3, .photo4{
-    width: 100%;
-    height: auto;
-    max-width: 300px; 
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
 }
 
-/* The Overlapping Effect */
+/* Image container styling */
+.image-container {
+    flex-basis: 45%;
+    text-align: center;
+}
+
+.photo1, .photo2, .photo3, .photo4 {
+    width: 100%;
+    height: auto;
+    max-width: 250px; /* Limit image size */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 10px 0;
+}
+
+/* Overlapping effect */
 .left-image {
     position: relative;
     top: -20px;
@@ -75,72 +89,81 @@ header {
     top: 20px;
 }
 
-/* Caption */
+/* Caption styling */
 .caption {
-    text-align: center;
     font-style: italic;
-    background-color: rgba(0,0,0,0.6);
+    background-color: rgba(0, 0, 0, 0.6);
     color: white;
     padding: 5px;
     border-radius: 4px;
     margin-top: -10px;
 }
 
-footer{
+/* Footer styling */
+footer {
+    position: relative;
     text-align: center;
     font-size: small;
     padding: 20px;
     width: 100%;
-    margin-top: 20px; /* This adds a space above the footer*/
-    background-color: rgb(210,196,212);
+    margin-top: 20px;
+    background-color: rgb(210, 196, 212);
+    z-index: 1;
 }
 
-h2{
+/* Heading styling */
+h2 {
     font-style: italic;
     text-align: center;
-}
-/*.content_section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: right;
-    align-items: flex-end;
-    height: 200px;
-    width: 200px;
-    padding: 15px;
-    margin: 10px;
-    border-style: solid;
-    border-color: #FEFAE0;
-} */
-a:hover {
-    color: rgb(255, 255, 255);
-} 
-  
-.image-container {
-    position: relative;
-    width: 400px; /* Adjust width as needed */
-    height: 400px;
-}
-  
-.white-box {
-    position: relative;
-    background-color: white;
-    padding: 80px;
-    width: 600px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-a:active {
-    color: purple;
+    font-family: "Arima", serif;
 }
 
-/*Styling for a thicker navigation bar*/
-.navbar{
-    background-color: rgb(133, 161,170);
+/* Navbar styling */
+.navbar {
+    background-color: rgb(133, 161, 170);
     height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-around;
     font-size: 20px;
 }
+
+/* Button styling */
+.rounded-square-button {
+    background-color: rgb(210, 196, 212);
+    color: white;
+    padding: 10px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+    width: 200px;
+    height: 50px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.rounded-square-button:hover {
+    background-color: #ccc;
+}
+
+/* Social media icon styling */
+.socialMediaIcon {
+    width: 20px;
+    height: 20px;
+    margin: 0 5px;
+}
+
+/* Font-specific classes */
+.abril-fatface-regular {
+    font-family: "Abril Fatface", serif;
+}
+
+.arima-subtitle {
+    font-family: "Arima", serif;
+}
+
 
 .abril-fatface-regular {
     font-family: "Abril Fatface", serif;
