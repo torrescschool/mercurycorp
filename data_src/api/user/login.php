@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     header("Location: ../../../web_src/user_views/nurse_dash.php");
                     break;
                 case 'HR':
-                    header("Location: ../../../web_src/user_views/admin_dash.php");
+                    header("Location: ../../../web_src/user_views/hr_dash.php");
                     break;
                 default:
                     header("Location: ../../../web_src/user_views/employee_dash.php");
