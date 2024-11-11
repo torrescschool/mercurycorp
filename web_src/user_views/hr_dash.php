@@ -1,13 +1,17 @@
 <?php
-//include('../includes/auth.php');
+session_start();
 
-//if (!isResident()) {
-    //header("Location: /views/login.php");
-   // exit;
-//}
+// Check if user is logged in
+if (!isset($_SESSION['username'])) {
+    header("Location: ../../data_src/api/user/login.php");
+    exit;
+}
 
-//shows HR and resident information that the resident is okay sharing. Employees can also be nurses
-
+// Check if user has the correct role for this page
+if ($_SESSION['role'] !== 'HR') {
+    echo "Access denied.";
+    exit;
+}
 ?>
 
 <!DOCTYPE html>
