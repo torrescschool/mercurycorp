@@ -170,6 +170,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
         
                 <button type="submit" class="btn btn-primary w-100" >Create User</button>
+                <br><br><br>
+                <a href="../../../web_src/login.html">Back to Log In</a>
 
                 
             </form>
@@ -178,7 +180,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </div>
         
 
-    <a href="/public/index.php">Back to Dashboard</a>
 </body>
 <footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
