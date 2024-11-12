@@ -44,6 +44,8 @@
       <h2 class = "arima-subtitle"> Hello (First Name)</h2>
       <div id="intro" class="section-text col d-flex justify-content-center align-items-center" style="height: 900;">
         <div class="white-box text-center" style="background-color: white; padding: 70px; width: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <div id = "statusBox" class = "text-box">
+            <p id = "statusText">
           <p class = "nurse-view">
             <h2 class = "roboto-bold">Patient List:</h2>
             <ul>
@@ -108,10 +110,8 @@
                 </div>
               </li>
             </ul>
-            <ul>
-              <li> blue outside the white box saying "Nurse View"</li>
-            </ul>
           </p>
+          </div>
           <p class = "patient-view">
             <h2 class = "roboto-bold">Here is your Daily Schedule:</h2>
               <li>add PDF creator</li>
@@ -123,21 +123,29 @@
           <p class = "hr-view">
             <h2 class = "roboto-bold">Nurses: </h2>
             <ul>
-              <ul class = "left-centered-list">
-                <li onclick = "toggleInfo(info8)">
-                Torres, Camilla, ID: 111111111
-                <div id = "info7" class = "nurse-info">
-                  <p class = "roboto-black-italic"> Camilla Torres</p>
-                <p>Date of Birth: 05/20/2002 </p>
-                <p>Date Hired: 10/01/2024</p>
-                <p class = "roboto-bold">Patients Assigned</p>
-                <li>Brown, Michael, ID: 089786756</li>
-                <li>Davis, Emily, ID: 987654321</li>
-                <li>Doe, John, ID: 123456789</li>
-                <li>Green, Samuel, ID: 567474632</li>
-                <li>Johnson, Mary, ID: 314253647</li>
-                </li>
+              <li onclick = "toggleInfo('info8')"> 
+                Torres, Camilla, ID: 1111111111
+                <div id = "info8" class = "patient-info">
+                  <p class = "roboto-black-italic">Camilla Torres</p>
+                  <p>Date of Birth: 07/10/2003</p>
+                  <p>Date Hired: 11/01/2024</p>
+                  <p class = "roboto-bold">Patients Assigned:</p>
+                  <p>Brown, Michael, ID: 089786756 </p>
+                  <p>Davis, Emily, ID: 987654321</p>
                 </div>
+              </li>
+              <li onclick = "toggleInfo('info9')"> 
+                Humble, Laney, ID: 222222222
+                <div id = "info9" class = "patient-info">
+                  <p class = "roboto-black-italic">Laney Humble</p>
+                  <p>Date of Birth: 07/10/2003</p>
+                  <p>Date Hired: 11/01/2024</p>
+                  <p class = "roboto-bold">Patients Assigned:</p>
+                  <p>Doe, John, ID: 123456789</p>
+                  <p>Green, Samuel, ID: 567474632</p>
+                  <p>Johnson, Mary, ID: 314253647</p>
+                </div>
+              </li>
             </ul>
             <li><a href = "www.example.com"> Nurse A (Last Name, First Name, ID)</a>Nurse A(Last Name, first name, ID)</li>
             <li><a href = "www.example.com"> Nurse B (Last Name, First Name, ID)</a></li>
