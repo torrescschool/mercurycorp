@@ -3,7 +3,7 @@ session_start();
 
 // Check if user is logged in
 if (!isset($_SESSION['username'])) {
-    header("Location: ../../data_src/api/user/login.php");
+    header("Location: ../../../data_src/api/user/login.php");
     exit;
 }
 
@@ -22,7 +22,7 @@ if ($_SESSION['role'] !== 'HR') {
 </head>
 <body>
     <h1>Human Resourse Dashboard</h1>
-    <p>Welcome, <?php echo $_SESSION['user']; ?>!</p>
+    <p>Welcome, <?php echo $_GET['user']; ?>!</p>
 
     <h2>HR Information</h2>
     <ul>
