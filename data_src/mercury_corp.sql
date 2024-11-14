@@ -178,9 +178,9 @@ VALUES ('Sophie', 'Collins', 'Geriatrics', 'collinss');
 INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 800);
 INSERT INTO accounting_record (insurance, monthly_rent) VALUES ('United Care', 900);
 
-INSERT INTO CARE (notes) VALUES ('Likes to eat lunch at 12:00 noon.');
-INSERT INTO CARE (notes) VALUES ('Goes to bed at 8:00 pm with.');
-INSERT INTO Care (notes) VALUES ('Eats breakfast at 8:00 am.');
+INSERT INTO care (notes) VALUES ('Likes to eat lunch at 12:00 noon.');
+INSERT INTO care (notes) VALUES ('Goes to bed at 8:00 pm with.');
+INSERT INTO care (notes) VALUES ('Eats breakfast at 8:00 am.');
 
 INSERT INTO medical_records
 (res_id,vaccinations, allergies)
