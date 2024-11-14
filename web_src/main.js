@@ -32,24 +32,16 @@ function toggleInfo(id) {
     info.style.display = info.style.display === 'none' || info.style.display === '' ? 'block' : 'none';
 }
 
-function setUserStatus(status){
-    const statusBox = document.getElementById("statusBox")
-    const statusText = document.getElementById("statusText");
-
-    // This is clearing previous classes
-    statusBox.classList.remove("patient", "nurse", "hr");
-
-    // This is updating the box based on user status
-    if(status === "patient"){
-        statusBox.classList.add("patient");
-        statusText.innerText = "Patient View";
-    }
-    if(status === "nurse"){
-        statusBox.classList.add("nurse");
-        statusText.innerText = "Nurse View";
-    }
-    if(status === "hr"){
-        statusBox.classList.add("hr");
-        statusText.innerText = "HR View";
+// function to set the view based on user status
+function setUserView(status) {
+    const viewLabel = document.getElementById("viewLabel");
+    
+    // Set label based on user status
+    if (status === "HR") {
+        viewLabel.textContent = "HR View";
+    } else if (status === "Nurse") {
+        viewLabel.textContent = "Nurse View";
+    } else if (status === "Patient") {
+        viewLabel.textContent = "Patient View";
     }
 }
