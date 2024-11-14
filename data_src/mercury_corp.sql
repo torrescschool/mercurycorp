@@ -134,7 +134,6 @@ CREATE TABLE users (
     PRIMARY KEY (user_id)
 );
 
-INSERT INTO departments (dept_name) VALUES ("Physician");
 INSERT INTO departments (dept_name) VALUES ("Nursing");
 INSERT INTO departments (dept_name) VALUES ("Accounting");
 INSERT INTO departments (dept_name) VALUES ("HR");
@@ -143,27 +142,17 @@ INSERT INTO departments (dept_name) VALUES ("Records");
 INSERT INTO employees
 (first_name, last_name, mobile_no, dob, job_title, salary, email, department_id, address)
 VALUES
-('Martin', 'Donna', 2122222222, '1990-03-05', 'HR Supervisor', 50000, 'donnam', 4, '12 Willow Road');
+('Martin', 'Donna', 2122222222, '1990-03-05', 'HR Supervisor', 50000, 'donnam', 3, '12 Willow Road');
 
 INSERT INTO employees
 (first_name, last_name, mobile_no, dob, job_title, salary, email, department_id, address)
 VALUES
-('Beverly', 'Banks', 2124444444, '1995-09-07', 'Accountant', 40000, 'banksb', 3, '911 Market Street');
+('Beverly', 'Banks', 2124444444, '1995-09-07', 'Accountant', 40000, 'banksb', 2, '911 Market Street');
 
 INSERT INTO employees
 (first_name, last_name, mobile_no, dob, job_title, salary, email, department_id, address)
 VALUES
-('Daniel', 'Doe', 2178890000, '1986-03-05', 'CNA', 58000, 'doed', 2, '212 Willow Road');
-
-INSERT INTO employees
-(first_name, last_name, mobile_no, dob, job_title, salary, email, department_id, address)
-VALUES
-('Sophie', 'Collins', 2123333333, '1987-03-19', 'Physician', 70000, 'collinss', 1, '400 Baugher Avenue');
-
-INSERT INTO employees
-(first_name, last_name, mobile_no, dob, job_title, salary, email, department_id, address)
-VALUES
-(104,'Mary', 'Fisher', 2134658907, '1989-03-24', 'Physician', 67000, 'fisherm', 1, '120 Baugher Avenue');
+('Daniel', 'Doe', 2178890000, '1986-03-05', 'CNA', 58000, 'doed', 1, '212 Willow Road');
 
 INSERT INTO residential_sector
 (unit, phone, location)
@@ -232,6 +221,3 @@ INSERT INTO residents
 (res_id,first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
 VALUES
 ('R002','Joys', 'Munchkin', '1960-12-09', '13 Alpha Street', 02, 2, 347878801, 2126579999,2,2,1,'E');
-
-ALTER TABLE users
-CHANGE linked_id id char(36);

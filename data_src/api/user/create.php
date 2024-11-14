@@ -71,9 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     // echo "<br>";
                     $role = $row['dept_name']; // Assign department name as role
                     // echo "Assigned Role: $role<br>"; // Debugging statement
-                }else {
-                    echo "No department found matching ID: $id and email: $username.<br>"; //debugging statement
-                }
+                 } else {
+                //     echo "No department found matching ID: $id and email: $username.<br>"; //debugging statement
+                } 
+              
             }
         }
         // Debug statement to confirm role before insert
@@ -90,17 +91,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmtInsert->bind_param("ssss", $username, $hashedPassword, $role, $id); // Use "i" for id if it's integer
 
             if ($stmtInsert->execute()) {
-                echo "User successfully created.";
-            } else{
-                echo "Please enter a valid username and id";
-                // echo "Error during insert: " . $stmtInsert->error  . "<br>";
+              $message = "User successfully created.";
+            } 
+            else {
+              echo "Error during insert: " . $stmtInsert->error  . "<br>";
             }
-
-            $stmtDept->close();
+            // $stmtDept->close();
             $stmtInsert->close();
         } else {
-            $error = "The ID and Username do not match any known role.";
-            echo $error . "<br>";
+            $message = "Please enter a valid username and ID.";
+            
         }
     }
 
@@ -165,7 +165,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="form-group mb-4">
-                    <label for="id" class="form-label"><strong>Enter Resident/Employee Identifying Number:</strong></label>
+                    <label for="id" class="form-label"><strong>Enter Identifying Number:</strong></label>
                     <input type="text" id="id" name="id" class="form-control" required>
                 </div>
         
@@ -173,6 +173,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <br><br><br>
                 <a href="../../../web_src/login.html">Back to Log In</a>
 
+                <!-- Display message inside the div -->
+                <?php if (!empty($message)) : ?>
+                  <div class="message">
+                  <?php echo $message; ?>
+                </div>
+    <?php endif; ?>
                 
             </form>
         </div>

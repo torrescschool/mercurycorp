@@ -3,5 +3,5 @@
 $host = "localhost";
 $dbUsername = "root";
 $dbPassword = "";
-$database = "mercurycorp"
+$database = "mercurycorpsample";
 ?>
