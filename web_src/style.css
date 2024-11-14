@@ -7,6 +7,9 @@ body, html {
     background-color: #fdf8ef;
 }
 
+button {
+    background-color: rgba(98, 75, 182, 0.667);
+}
 
 /* Header styling */
 header {
