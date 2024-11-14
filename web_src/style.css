@@ -310,18 +310,17 @@ h1{
 
 .view-box {
     padding: 20px; /* Adjust padding to control frame thickness */
-    background-color: #6f5d7e; /* Color for the frame, replace with your color */
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
 }
-.patient{
+.view-box.patient{
     border-color: blue;
 }
-.nurse{
+.viewbox.nurse{
     border-color: green;
 }
-.hr{
+.viewbox.hr{
     border-color: red;
 }

@@ -42,116 +42,136 @@
         <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Login</a>
       </nav>
       <h2 class = "arima-subtitle"> Hello (First Name)</h2>
-      <div id="intro" class="section-text col d-flex justify-content-center align-items-center" style="height: 900;">
-        <div class="white-box text-center" style="background-color: white; padding: 70px; width: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-         <div id="viewBox" class="view-box">
-          <div id = "statusBox" class = "text-box">
-            <p id = "statusText">
-          <p class = "nurse-view">
-            <h2 class = "roboto-bold">Patient List:</h2>
-            <ul>
-              <li onclick = "toggleInfo('info1')"> 
-                Brown, Michael, ID: 089786756
-                <div id = "info1" class = "patient-info">
-                  <p class = "roboto-black-italic">Michael Brown</p>
-                  <p>Date of Birth: 09/18/1988</p>
-                  <p>Height: 6'2"</p>
-                  <p>Weight: 200lbs</p>
-                  <a href = "medical_records/michael_brown.pdf" target = "_blank">
-                    <button class = "rounded-square-button"> View Medical Record</button>
-                  </a>
+      <div id="intro" class="section-text col d-flex justify-content-center align-items-center" style="height: 900px;">
+        <div id="viewBox" class="view-box">
+            <!-- Main white box content -->
+            <div class="white-box text-center">
+                <div id="statusBox" class="text-box">
+                    <h2 id="viewLabel"> ___View</h2>
+                    
+                    <!-- Sections for each user type -->
+                    <div id="hrContent" class="user-content">
+                        <h3>HR View</h3>
+                        <h2 class = "roboto-bold">Nurses: </h2>
+                        <ul>
+                          <li onclick = "toggleInfo('info8')"> 
+                          Torres, Camilla, ID: 1111111111
+                          <div id = "info8" class = "patient-info">
+                            <p class = "roboto-black-italic">Camilla Torres</p>
+                            <p>Date of Birth: 07/10/2003</p>
+                            <p>Date Hired: 11/01/2024</p>
+                            <p class = "roboto-bold">Patients Assigned:</p>
+                            <p>Brown, Michael, ID: 089786756 </p>
+                            <p>Davis, Emily, ID: 987654321</p>
+                          </div>
+                          </li>
+                          <li onclick = "toggleInfo('info9')"> 
+                            Humble, Laney, ID: 222222222
+                          <div id = "info9" class = "patient-info">
+                            <p class = "roboto-black-italic">Laney Humble</p>
+                            <p>Date of Birth: 07/10/2003</p>
+                            <p>Date Hired: 11/01/2024</p>
+                            <p class = "roboto-bold">Patients Assigned:</p>
+                            <p>Doe, John, ID: 123456789</p>
+                            <p>Green, Samuel, ID: 567474632</p>
+                            <p>Johnson, Mary, ID: 314253647</p>
+                          </div>
+                          </li>
+                        </ul>
+                      </div>
+                    <div id="nurseContent" class="user-content" style="display: none;">
+                        <h3>Nurse View</h3>
+                        <p class = "nurse-view">
+                          <h2 class = "roboto-bold">Patient List:</h2>
+                          <ul>
+                            <li onclick = "toggleInfo('info1')"> 
+                              Brown, Michael, ID: 089786756
+                              <div id = "info1" class = "patient-info">
+                                <p class = "roboto-black-italic">Michael Brown</p>
+                                <p>Date of Birth: 09/18/1988</p>
+                                <p>Height: 6'2"</p>
+                                <p>Weight: 200lbs</p>
+                                <a href = "medical_records/michael_brown.pdf" target = "_blank">
+                                  <button class = "rounded-square-button"> View Medical Record</button>
+                                </a>
+                              </div>
+                            </li>
+                            <li onclick = "toggleInfo('info2')"> 
+                              Davis, Emily, ID: 987654321
+                              <div id = "info2" class = "patient-info">
+                                <p class = "roboto-black-italic">Emily Davis</p>
+                                <p>Date of Birth: 03/10/2000</p>
+                                <p>Height: 5'4"</p>
+                                <p>Weight: 120lbs</p>
+                                <a href = "medical_records/emily_davis.pdf" target = "_blank">
+                                  <button class = "rounded-square-button"> View Medical Record</button>
+                                </a>
+                              </div>
+                            </li>
+                            <li onclick = "toggleInfo('info3')"> 
+                              Doe, John, ID: 123456789
+                              <div id = "info3" class = "patient-info">
+                                <p class = "roboto-black-italic">John Doe</p>
+                                <p>Date of Birth: 01/15/1985</p>
+                                <p>Height: 5'9"</p>
+                                <p>Weight: 150lbs</p>
+                                <a href = "medical_records/john_doe.pdf" target = "_blank">
+                                  <button class = "rounded-square-button"> View Medical Record</button>
+                                </a>
+                              </div>
+                            </li>
+                            <li onclick = "toggleInfo('info4')"> 
+                              Green, Samuel, ID: 567474632
+                              <div id = "info4" class = "patient-info">
+                                <p class = "roboto-black-italic" font-size: 20pt>Samuel Green</p>
+                                <p>Date of Birth: 10/30/1976</p>
+                                <p>Height: 5'11"</p>
+                                <p>Weight: 180lbs</p>
+                                <a href = "medical_records/samuel_green.pdf" target = "_blank">
+                                  <button class = "rounded-square-button"> View Medical Record</button>
+                                </a>
+                              </div>
+                            </li>
+                            <li onclick = "toggleInfo('info5')"> 
+                              Johnson, Mary, ID: 314253647
+                              <div id = "info5" class = "patient-info">
+                                <p class = "roboto-black-italic">Mary Johnson</p>
+                                <p>Date of Birth: 07/22/1992</p>
+                                <p>Height: 5'5"</p>
+                                <p>Weight: 135lbs</p>
+                                <a href = "medical_records/mary_johnson.pdf" target = "_blank">
+                                  <button class = "rounded-square-button"> View Medical Record</button>
+                                </a>
+                              </div>
+                            </li>
+                          </ul>
+                        </p>
+                    </div>
+    
+                    <div id="patientContent" class="user-content" style="display: none;">
+                        <h3>Patient Information</h3>
+                        <p class = "patient-view">
+                          <h2 class = "roboto-bold">Here is your Daily Schedule:</h2>
+                            <li>add PDF creator</li>
+                            <li>make it look nice</li>
+                            <li>purple outside the white box saying "Patient View"</li>
+                            <li>pull data from the database to write out their schedule</li>
+                          </ul>
+                        </p>
+                    </div>
                 </div>
-              </li>
-              <li onclick = "toggleInfo('info2')"> 
-                Davis, Emily, ID: 987654321
-                <div id = "info2" class = "patient-info">
-                  <p class = "roboto-black-italic">Emily Davis</p>
-                  <p>Date of Birth: 03/10/2000</p>
-                  <p>Height: 5'4"</p>
-                  <p>Weight: 120lbs</p>
-                  <a href = "medical_records/emily_davis.pdf" target = "_blank">
-                    <button class = "rounded-square-button"> View Medical Record</button>
-                  </a>
-                </div>
-              </li>
-              <li onclick = "toggleInfo('info3')"> 
-                Doe, John, ID: 123456789
-                <div id = "info3" class = "patient-info">
-                  <p class = "roboto-black-italic">John Doe</p>
-                  <p>Date of Birth: 01/15/1985</p>
-                  <p>Height: 5'9"</p>
-                  <p>Weight: 150lbs</p>
-                  <a href = "medical_records/john_doe.pdf" target = "_blank">
-                    <button class = "rounded-square-button"> View Medical Record</button>
-                  </a>
-                </div>
-              </li>
-              <li onclick = "toggleInfo('info4')"> 
-                Green, Samuel, ID: 567474632
-                <div id = "info4" class = "patient-info">
-                  <p class = "roboto-black-italic" font-size: 20pt>Samuel Green</p>
-                  <p>Date of Birth: 10/30/1976</p>
-                  <p>Height: 5'11"</p>
-                  <p>Weight: 180lbs</p>
-                  <a href = "medical_records/samuel_green.pdf" target = "_blank">
-                    <button class = "rounded-square-button"> View Medical Record</button>
-                  </a>
-                </div>
-              </li>
-              <li onclick = "toggleInfo('info5')"> 
-                Johnson, Mary, ID: 314253647
-                <div id = "info5" class = "patient-info">
-                  <p class = "roboto-black-italic">Mary Johnson</p>
-                  <p>Date of Birth: 07/22/1992</p>
-                  <p>Height: 5'5"</p>
-                  <p>Weight: 135lbs</p>
-                  <a href = "medical_records/mary_johnson.pdf" target = "_blank">
-                    <button class = "rounded-square-button"> View Medical Record</button>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </p>
-          <p class = "patient-view">
-            <h2 class = "roboto-bold">Here is your Daily Schedule:</h2>
-              <li>add PDF creator</li>
-              <li>make it look nice</li>
-              <li>purple outside the white box saying "Patient View"</li>
-              <li>pull data from the database to write out their schedule</li>
-            </ul>
-          </p>
-          <p class = "hr-view">
-            <h2 class = "roboto-bold">Nurses: </h2>
-            <ul>
-              <li onclick = "toggleInfo('info8')"> 
-                Torres, Camilla, ID: 1111111111
-                <div id = "info8" class = "patient-info">
-                  <p class = "roboto-black-italic">Camilla Torres</p>
-                  <p>Date of Birth: 07/10/2003</p>
-                  <p>Date Hired: 11/01/2024</p>
-                  <p class = "roboto-bold">Patients Assigned:</p>
-                  <p>Brown, Michael, ID: 089786756 </p>
-                  <p>Davis, Emily, ID: 987654321</p>
-                </div>
-              </li>
-              <li onclick = "toggleInfo('info9')"> 
-                Humble, Laney, ID: 222222222
-                <div id = "info9" class = "patient-info">
-                  <p class = "roboto-black-italic">Laney Humble</p>
-                  <p>Date of Birth: 07/10/2003</p>
-                  <p>Date Hired: 11/01/2024</p>
-                  <p class = "roboto-bold">Patients Assigned:</p>
-                  <p>Doe, John, ID: 123456789</p>
-                  <p>Green, Samuel, ID: 567474632</p>
-                  <p>Johnson, Mary, ID: 314253647</p>
-                </div>
-              </li>
-            </ul>
-          </p>
-          </div>
+            </div>
         </div>
-      </div>
     </div>
+    
+      
+      
+      
+      
+      
+      
+    </div>
+  </div>
     
 </body>
 <footer>

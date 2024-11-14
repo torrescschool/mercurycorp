@@ -34,14 +34,32 @@ function toggleInfo(id) {
 
 // function to set the view based on user status
 function setUserView(status) {
-    const viewLabel = document.getElementById("viewLabel");
+    function setUserView(status) {
+        const viewBox = document.getElementById("viewBox");
+        const viewLabel = document.getElementById("viewLabel");
+        const hrContent = document.getElementById("hrContent");
+        const nurseContent = document.getElementById("nurseContent");
+        const patientContent = document.getElementById("patientContent");
     
-    // Set label based on user status
-    if (status === "HR") {
-        viewLabel.textContent = "HR View";
-    } else if (status === "Nurse") {
-        viewLabel.textContent = "Nurse View";
-    } else if (status === "Patient") {
-        viewLabel.textContent = "Patient View";
+        // Reset classes and hide all sections
+        viewBox.classList.remove("hr-view", "nurse-view", "patient-view");
+        hrContent.style.display = "none";
+        nurseContent.style.display = "none";
+        patientContent.style.display = "none";
+    
+        // Set up the view based on user status
+        if (status === "HR") {
+            viewLabel.textContent = "HR View";
+            viewBox.classList.add("hr-view");
+            hrContent.style.display = "block";
+        } else if (status === "Nurse") {
+            viewLabel.textContent = "Nurse View";
+            viewBox.classList.add("nurse-view");
+            nurseContent.style.display = "block";
+        } else if (status === "Patient") {
+            viewLabel.textContent = "Patient View";
+            viewBox.classList.add("patient-view");
+            patientContent.style.display = "block";
+        }
     }
 }
