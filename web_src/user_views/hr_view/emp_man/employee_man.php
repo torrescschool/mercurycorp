@@ -22,7 +22,6 @@ if ($result && $result->num_rows > 0) {
 }
 
 $totalEmployees = $conn->query("SELECT COUNT(*) AS total FROM employees")->fetch_assoc()['total'];
-$totalDepartments = $conn->query("SELECT COUNT(DISTINCT department_id) AS total FROM employees")->fetch_assoc()['total'];
 $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->fetch_assoc()['average'];
 ?>
 <html lang="en">
@@ -70,12 +69,9 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
                 </ul>
             </div>
 
-            <!-- Home button on the far right -->
-
             
         </div>
     </nav>
-    <!-- Employee Management Page -->
 
 
 <!-- Search / Filter form -->
@@ -94,7 +90,6 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
 <h4>Overview</h4>
 <ul>
     <li>Total Employees: <?php echo $totalEmployees; ?></li>
-    <li>Total Departments: <?php echo $totalDepartments; ?></li>
     <li>Average Salary: <?php echo number_format($averageSalary, 2); ?> USD</li>
 </ul>
 
