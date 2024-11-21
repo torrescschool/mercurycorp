@@ -90,10 +90,10 @@ if (!$employee) {
     
             
             <div class="collapse navbar-collapse" id="navbarNav">
-            <h3>Employee Information</h3>
+            <h3>Employee Dashboard</h3>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../../index.html" class="btn btn-light ms-2">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>
 
@@ -103,49 +103,53 @@ if (!$employee) {
         </div>
     </nav>
     <!-- Employee Dashboard -->
-<h3>Welcome, <?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?>!</h3>
-<p>Role: <?php echo htmlspecialchars($employee['job_title']); ?></p>
+    <h4>Welcome to your dashboard, <strong><?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></strong>!</h4>
+    <p>Your role: <strong><?php echo htmlspecialchars($employee['job_title']); ?></strong></p><br><br>
 
-<!-- Basic Information -->
-<h4>Your Information</h4>
-<table border="1" cellpadding="5" cellspacing="0">
-    <tr>
-        <th>Full Name</th>
-        <td><?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></td>
-    </tr>
-    <tr>
-        <th>Job Title</th>
-        <td><?php echo htmlspecialchars($employee['job_title']); ?></td>
-    </tr>
-    <tr>
-        <th>Department</th>
-        <td><?php echo htmlspecialchars($employee['dept_name']); ?></td>
-    </tr>
-    <tr>
-        <th>Email</th>
-        <td><?php echo htmlspecialchars($employee['email']); ?></td>
-    </tr>
-    <tr>
-        <th>Phone</th>
-        <td><?php echo htmlspecialchars($employee['mobile_no']); ?></td>
-    </tr>
-    <!-- <tr>
-        <th>Date Hired</th>
-        <td><?php echo htmlspecialchars($employee['date_hired']); ?></td>
-    </tr> -->
-    <tr>
-        <th>Salary</th>
-        <td><?php echo htmlspecialchars($employee['salary']); ?></td>
-    </tr>
-</table>
 
-<!-- Links for Employee Actions -->
-<h4>Actions</h4>
-<ul>
-    <li><a href="update_profile.php">Update Personal Details</a></li>
-    <li><a href="leave_requests.php">View Leave Balance/Requests</a></li>
-    <li><a href="documents.php">Access Personal Files</a></li>
-</ul>
+<!-- Employee Information Table -->
+
+<section style="display: flex; justify-content: center; margin-bottom: 20px;">
+        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: left; width: 60%;">
+            <thead style="background-color: #f2f2f2;">
+                <tr>
+                    <th colspan="2" style="text-align: center;">Your Information</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th style="border: 1px solid #000;">Full Name</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000;">Job Title</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['job_title']); ?></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000;">Department</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['dept_name']); ?></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000;">Email</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['email']); ?></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000;">Phone</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['mobile_no']); ?></td>
+                </tr>
+                <tr>
+                    <th style="border: 1px solid #000;">Salary</th>
+                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars("$" . number_format($employee['salary'], 2)); ?></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    <section style="text-align: center; margin-top: 20px;">
+        <h3>Announcements</h3>
+        <p><strong>Upcoming Holiday:</strong> The office will be closed on December 25th for Christmas.</p>
+        <p><strong>Employee of the month: </strong>Congratulations to <strong>Daniel Doe</strong> for outstanding performance and dedication!</p>
+    </section>
+
 <footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
   <p>Follow us on social media!</p>
