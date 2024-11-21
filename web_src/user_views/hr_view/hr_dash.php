@@ -126,11 +126,11 @@ $conn->close();
     </nav>
     
 <!-- Main Content -->
-<div class="alert alert-info mt-3">
+    <br><br>
     <h4>Welcome,<?php echo htmlspecialchars($firstName); ?></h4>
     <p>Here's an overview of your HR management tools.</p>
-</div>
 
+    <br><br>
 <div class="row text-center my-4">
     <div class="col-md-3">
         <div class="card bg-primary text-white">
@@ -166,6 +166,7 @@ $conn->close();
     </div>
 </div>
 
+<br>
 <div class="card my-4">
     <div class="card-header bg-secondary text-white">Recent Activities</div>
     <ul class="list-group list-group-flush">
