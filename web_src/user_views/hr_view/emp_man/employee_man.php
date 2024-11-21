@@ -20,22 +20,83 @@ if ($result && $result->num_rows > 0) {
         $employees[] = $row;
     }
 }
-?>
 
-<!-- Employee Management Page -->
-<h3>Employee Management</h3>
+$totalEmployees = $conn->query("SELECT COUNT(*) AS total FROM employees")->fetch_assoc()['total'];
+$totalDepartments = $conn->query("SELECT COUNT(DISTINCT department_id) AS total FROM employees")->fetch_assoc()['total'];
+$averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->fetch_assoc()['average'];
+?>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <!-- CSS Source-->
+  <link href="../../../style.css" rel="stylesheet">
+  <!-- Google Font API-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Arima:wght@100..700&display=swap" rel="stylesheet">
+  <!-- JavaScript Source-->
+  <!-- <script src="main.js"></script> -->
+    <title>Employee Management</title>
+    <script src="https://kit.fontawesome.com/d896ee4cb8.js" crossorigin="anonymous"></script>
+</head>
+<body>
+<header class="row">
+        <div class="col-1">
+          <img class="main_logo" src="../../../photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
+        </div>
+        <div class="col">
+          <h1 class = "abril-fatface-regular">Mercury Corp</h1>
+        </div>
+      </header>  
+      <nav class="navbar navbar-expand-lg" style="background-color: rgb(133, 161, 170); height: 70px;">
+        <div class="container-fluid">
+    
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+            <h3>Employee Management</h3>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../../../index.html" class="btn btn-light ms-2">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../logout.php">Logout</a></li>
+                </ul>
+            </div>
+
+            <!-- Home button on the far right -->
+
+            
+        </div>
+    </nav>
+    <!-- Employee Management Page -->
+
 
 <!-- Search / Filter form -->
-<form method="GET" action="">
+<!-- <form method="GET" action="">
     <label for="role">Role:</label>
     <select name="role" id="role">
         <option value="">All</option>
         <option value="nurse">Nurse</option>
-        <option value="physician">Physician</option>
+        <option value="physician">Physician</option> -->
         <!-- Add other roles  -->
-    </select>
+    <!-- </select>
     <button type="submit">Filter</button>
-</form> <br><br>
+</form> <br><br> -->
+
+<!-- Statistics Section -->
+<h4>Overview</h4>
+<ul>
+    <li>Total Employees: <?php echo $totalEmployees; ?></li>
+    <li>Total Departments: <?php echo $totalDepartments; ?></li>
+    <li>Average Salary: <?php echo number_format($averageSalary, 2); ?> USD</li>
+</ul>
 
 <!-- Add New Employee Button -->
 <a href="create_employee.php">Add New Employee</a>
@@ -73,7 +134,6 @@ if ($result && $result->num_rows > 0) {
                 <td><?php echo htmlspecialchars($age); ?></td>
                 <td>
                     <a href="update_employee.php?emp_id=<?php echo $employee['emp_id']; ?>">Edit</a>
-                    <a href="delete_employee.php?emp_id=<?php echo $employee['emp_id']; ?>" onclick="return confirm('Are you sure you want to delete this employee?');">Delete</a>
                 </td>
             </tr>
         <?php endforeach; ?>
@@ -84,6 +144,17 @@ if ($result && $result->num_rows > 0) {
     <input type="text" name="search" placeholder="Search by name or ID">
     <button type="submit">Search</button>
 </form>
+
+<footer>
+  <p> 2024 Mercury Corp. All rights reserved.</p>
+  <p>Follow us on social media!</p>
+  <img class = "socialMediaIcon" src = "../../../photos/facebook.png" alt = "Facebook">
+  <img class = "socialMediaIcon" src = "../../../photos/instagram.png" alt = "Instagram">
+  <img class = "socialMediaIcon" src = "../../../photos/twitter.png" alt = "Twitter">
+</footer>
+</body>
+</html>
+
 
 <?php
 // Handle Search
