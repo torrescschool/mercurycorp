@@ -130,7 +130,6 @@ $conn->close();
     <h4>Welcome,<?php echo htmlspecialchars($firstName); ?></h4>
     <p>Here's an overview of your HR management tools.</p>
 
-    <br><br>
 <div class="row text-center my-4">
     <div class="col-md-3">
         <div class="card bg-primary text-white">
