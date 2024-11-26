@@ -13,20 +13,18 @@ include('db_queries.php');
 </head>
 <body>
     <!-- Header Section -->
-    <header class="d-flex align-items-center p-3 bg-light">
-        <img src="../photos/mercuryCorpLogo.png" alt="MercuryCorp logo" class="me-3" style="width: 50px;">
-        <h1>Mercury Corp - Nurse Dashboard</h1>
-    </header>
-
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Dashboard</a>
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
-            </ul>
+    <header class="row">
+        <div class="col-1">
+          <img class="main_logo" src="photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
         </div>
-    </nav>
+        <div class="col">
+          <h1 class = "abril-fatface-regular">Mercury</h1>
+        </div>
+      </header>      
+      <nav class="navbar" style="background-color: rgb(133, 161,170); height: 70px">
+        <!-- Navbar content -->
+        <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Log out</a>
+      </nav>
 
     <!-- Welcome Message -->
     <div class="container mt-4">
