@@ -14,13 +14,14 @@ if ($_SESSION['role'] !== 'Physician') {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <link rel="stylesheet" href=".../styles.css">
-    <title>Physician Dashboard</title>
-</head>
+<?PHP
+include("head.php");
+?>
 <body>
+    <?PHP
+    include('../header.php');
+    include('../navbar2.php');
+    ?>
     <h1>Physician Dashboard</h1>
     <p>Welcome, <?php echo $_SESSION['user']; ?>!</p>
 
@@ -33,3 +34,6 @@ if ($_SESSION['role'] !== 'Physician') {
     <a href="/public/index.php">Logout</a>
 </body>
 </html>
+<?PHP
+    include "../footer.php";
+?>

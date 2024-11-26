@@ -1,35 +1,16 @@
 <?php
 include('db_queries.php');
+include('../head.php');
+include('../navbarFunctions.php');
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/mercurycorp/mercurycorp/web_src/style.css">
-    <title>Nurse Dashboard</title>
-</head>
 <body>
-    <!-- Header Section -->
-    <header class="row">
-        <div class="col-1">
-          <img class="main_logo" src="photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
-        </div>
-        <div class="col">
-          <h1 class = "abril-fatface-regular">Mercury</h1>
-        </div>
-      </header>      
-      <nav class="navbar" style="background-color: rgb(133, 161,170); height: 70px">
-        <!-- Navbar content -->
-        <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Log out</a>
-      </nav>
-
+    <?PHP
+    include('../header.php');
+    include('../navbar2.php');
+    ?>
     <!-- Welcome Message -->
     <div class="container mt-4">
         <h2 class="text-center">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Nurse'); ?>!</h2>
-
         <!-- Today's Tasks Section -->
         <section class="my-4">
             <h3>Today's Tasks</h3>
@@ -107,7 +88,7 @@ include('db_queries.php');
                     <p>Date of Birth: 09/18/1988</p>
                     <p>Height: 6'2"</p>
                     <p>Weight: 200lbs</p>
-                    <a href="medical_records/michael_brown.pdf" target="_blank">
+                    <a href="<?php echo url();?>medical_records/michael_brown.pdf" target="_blank">
                         <button class="rounded-square-button">View Medical Record</button>
                     </a>
                 </div>
@@ -119,7 +100,7 @@ include('db_queries.php');
                     <p>Date of Birth: 03/10/2000</p>
                     <p>Height: 5'4"</p>
                     <p>Weight: 120lbs</p>
-                    <a href="medical_records/emily_davis.pdf" target="_blank">
+                    <a href="<?php echo url();?>medical_records/emily_davis.pdf" target="_blank">
                         <button class="rounded-square-button">View Medical Record</button>
                     </a>
                 </div>
@@ -131,7 +112,7 @@ include('db_queries.php');
                     <p>Date of Birth: 01/15/1985</p>
                     <p>Height: 5'9"</p>
                     <p>Weight: 150lbs</p>
-                    <a href="medical_records/john_doe.pdf" target="_blank">
+                    <a href="<?php echo url();?>medical_records/john_doe.pdf" target="_blank">
                         <button class="rounded-square-button">View Medical Record</button>
                     </a>
                 </div>
@@ -143,7 +124,7 @@ include('db_queries.php');
                     <p>Date of Birth: 10/30/1976</p>
                     <p>Height: 5'11"</p>
                     <p>Weight: 180lbs</p>
-                    <a href="medical_records/samuel_green.pdf" target="_blank">
+                    <a href="<?php echo url();?>medical_records/samuel_green.pdf" target="_blank">
                         <button class="rounded-square-button">View Medical Record</button>
                     </a>
                 </div>
@@ -155,7 +136,7 @@ include('db_queries.php');
                     <p>Date of Birth: 07/22/1992</p>
                     <p>Height: 5'5"</p>
                     <p>Weight: 135lbs</p>
-                    <a href="medical_records/mary_johnson.pdf" target="_blank">
+                    <a href="<?php echo url();?>medical_records/mary_johnson.pdf" target="_blank">
                         <button class="rounded-square-button">View Medical Record</button>
                     </a>
                 </div>
@@ -172,4 +153,8 @@ include('db_queries.php');
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <?PHP
+    include "../footer.php";
+    ?>
+
     </body>
