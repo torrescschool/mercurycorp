@@ -11,7 +11,7 @@ include('db_queries.php');
     <link rel="stylesheet" href="/mercurycorp/mercurycorp/web_src/style.css">
     <title>Nurse Dashboard</title>
 </head>
-<bod>
+<body>
     <!-- Header Section -->
     <header class="row">
         <div class="col-1">
@@ -80,7 +80,7 @@ include('db_queries.php');
                         <th>Physician</th>
                     </tr>
                 </thead>
-                <tbody>
+                <body>
                     <?php foreach ($recentOrders as $order): ?>
                         <tr>
                             <td><?= htmlspecialchars($order['order_id']) ?></td>
@@ -90,7 +90,7 @@ include('db_queries.php');
                             <td><?= htmlspecialchars($order['physician_id']) ?></td>
                         </tr>
                     <?php endforeach; ?>
-                </tbody>
+                </body>
             </table>
         </section>
     </div>
@@ -172,3 +172,4 @@ include('db_queries.php');
         }
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
