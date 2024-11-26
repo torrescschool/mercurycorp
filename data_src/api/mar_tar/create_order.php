@@ -1,15 +1,15 @@
 <?php
-// create_order.php
-
-// Enable error reporting for debugging
+session_start(); // Make sure session is started
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Database credentials
-$host = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-$database = "mercurycorp";
+$host = "156.67.74.51";
+$dbUsername = "u413142534_mercurycorp";
+$dbPassword = "H3@lthM@tters!";
+$database = "u413142534_mercurycorp";
+
+$error = ""; // Variable to hold error messages
 
 try {
     // Create a new PDO connection
@@ -23,29 +23,38 @@ try {
     $start_date = filter_input(INPUT_POST, 'start_date', FILTER_SANITIZE_SPECIAL_CHARS);
     $end_date = filter_input(INPUT_POST, 'end_date', FILTER_SANITIZE_SPECIAL_CHARS) ?: null;
     $instructions = filter_input(INPUT_POST, 'instructions', FILTER_SANITIZE_SPECIAL_CHARS);
-    $physician_id = filter_input(INPUT_POST, 'physician_id', FILTER_VALIDATE_INT);
+    $physician_id = filter_input(INPUT_POST, 'physician_id', FILTER_SANITIZE_NUMBER_INT);
+    $physician_id = $physician_id !== "" ? (int)$physician_id : null; // Convert to integer if valid
     $resident_id = filter_input(INPUT_POST, 'res_id', FILTER_SANITIZE_SPECIAL_CHARS);
-    $employee_id = filter_input(INPUT_POST, 'emp_id', FILTER_VALIDATE_INT);
+    $employee_id = filter_input(INPUT_POST, 'employee_id', FILTER_VALIDATE_INT);
+
+    $today = date('Y-m-d');
+    if (empty($start_date) || strtotime($start_date) < strtotime($today)) {
+        $error = "Error: The start date cannot be before today.";
+        echo $error;
+        exit;
+    }
 
     // Check if required fields are present and not empty
     if (empty($medication)) {
         echo "Error: Medication is missing.";
+        exit;
     } elseif (empty($dosage)) {
         echo "Error: Dosage is missing.";
+        exit;
     } elseif (empty($frequency)) {
         echo "Error: Frequency is missing.";
+        exit;
     } elseif (empty($start_date)) {
         echo "Error: Start date is missing.";
+        exit;
     } elseif (empty($physician_id)) {
         echo "Error: Physician ID is missing.";
+        exit;
     } elseif (empty($resident_id)) {
         echo "Error: Resident ID is missing.";
-    } else {
-        echo "All fields are filled.";
+        exit;
     }
-    exit;
-    
-    
 
     // Check if the physician_id exists
     $physicianCheckStmt = $pdo->prepare("SELECT COUNT(*) FROM physician WHERE physician_id = :physician_id");
@@ -85,13 +94,12 @@ try {
     $stmt->execute();
 
     // Redirect back to the dashboard with a success message
-    header("Location: nurse_dash.php?success=1");
+    header("Location: /mercurycorp/mercurycorp/web_src/user_views/nurse_dash.php?success=1");
     exit;
 
 } catch (PDOException $e) {
-    // Log the error and display a generic message to the user
     error_log("Database error: " . $e->getMessage());
-    echo "An error occurred while processing your request. Please try again later.";
+    echo "An error occurred while processing your request.";
     exit;
 }
 ?>
