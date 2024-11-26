@@ -29,8 +29,9 @@ function init(){
 
 function toggleInfo(id) {
     const info = document.getElementById(id);
-    info.style.display = info.style.display === 'none' || info.style.display === '' ? 'block' : 'none';
-}
+    if(infoDiv){
+        infoDiv.style.display = infoDiv.style.display === 'none'? 'block' : 'none';
+    }}
 
 // function to set the view based on user status
 function setUserView(status) {
