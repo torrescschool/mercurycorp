@@ -11,7 +11,7 @@ include('db_queries.php');
     <link rel="stylesheet" href="/mercurycorp/mercurycorp/web_src/style.css">
     <title>Nurse Dashboard</title>
 </head>
-<body>
+<bod>
     <!-- Header Section -->
     <header class="row">
         <div class="col-1">
@@ -94,6 +94,70 @@ include('db_queries.php');
             </table>
         </section>
     </div>
+    <h2>Patient List</h2>
+        <ul>
+        <li onclick = "toggleInfo('info1')"> 
+            Brown, Michael, ID: 089786756
+                <div id = "info1" class = "patient-info">
+                    <p class = "roboto-black-italic">Michael Brown</p>
+                    <p>Date of Birth: 09/18/1988</p>
+                    <p>Height: 6'2"</p>
+                    <p>Weight: 200lbs</p>
+                    <a href = "medical_records/michael_brown.pdf" target = "_blank">
+                        <button class = "rounded-square-button"> View Medical Record</button>
+                    </a>
+                </div>
+        </li>
+        <li onclick = "toggleInfo('info2')"> 
+            Davis, Emily, ID: 987654321
+            <div id = "info2" class = "patient-info">
+            <p class = "roboto-black-italic">Emily Davis</p>
+            <p>Date of Birth: 03/10/2000</p>
+            <p>Height: 5'4"</p>
+            <p>Weight: 120lbs</p>
+            <a href = "medical_records/emily_davis.pdf" target = "_blank">
+                <button class = "rounded-square-button"> View Medical Record</button>
+            </a>
+            </div>
+        </li>
+        <li onclick = "toggleInfo('info3')"> 
+            Doe, John, ID: 123456789
+            <div id = "info3" class = "patient-info">
+            <p class = "roboto-black-italic">John Doe</p>
+            <p>Date of Birth: 01/15/1985</p>
+            <p>Height: 5'9"</p>
+            <p>Weight: 150lbs</p>
+            <a href = "medical_records/john_doe.pdf" target = "_blank">
+            <button class = "rounded-square-button"> View Medical Record</button>
+            </a>
+            </div>
+        </li>
+        <li onclick = "toggleInfo('info4')"> 
+            Green, Samuel, ID: 567474632
+            <div id = "info4" class = "patient-info">
+                <p class = "roboto-black-italic" font-size: 20pt>Samuel Green</p>
+                <p>Date of Birth: 10/30/1976</p>
+                <p>Height: 5'11"</p>
+                <p>Weight: 180lbs</p>
+                <a href = "medical_records/samuel_green.pdf" target = "_blank">
+                    <button class = "rounded-square-button" onclick = "window.location.href = web_src/medical_records/samuel_green " > View Medical Record</button>
+                </a>
+            </div>
+        </li>
+        <li onclick = "toggleInfo('info5')"> 
+            Johnson, Mary, ID: 314253647
+            <div id = "info5" class = "patient-info">
+                <p class = "roboto-black-italic">Mary Johnson</p>
+                <p>Date of Birth: 07/22/1992</p>
+                <p>Height: 5'5"</p>
+                <p>Weight: 135lbs</p>
+                <a href = "medical_records/mary_johnson.pdf" target = "_blank">
+                    <button class = "rounded-square-button"> View Medical Record</button>
+                </a>
+            </div>
+        </li>
+    </ul>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
