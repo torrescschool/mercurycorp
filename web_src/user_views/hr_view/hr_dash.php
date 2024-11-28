@@ -123,7 +123,7 @@ $conn->close();
     
 <!-- Main Content -->
     <br><br>
-    <h4>Welcome,<?php echo htmlspecialchars($firstName); ?></h4>
+    <h4 >Welcome,<?php echo htmlspecialchars($firstName); ?></h4>
     <p>Here's an overview of your HR management tools.</p>
 
 <div class="row text-center my-4">

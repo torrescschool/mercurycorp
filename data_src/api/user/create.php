@@ -148,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <a id = "nav-bar options" href = "../../../web_src/index.php" class = "arima-subtitle">Home</a>
         <!-- <a id = "nav-bar options" href = "Residents.html" class = "arima-subtitle">Residents</a>
         <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Login</a> -->
-      </nav>
+      </nav><br>
       <h2 class = "arima-subtitle" font-stle:"italic"> Create your user account</h2>
       <div id="intro" class="section-text col d-flex justify-content-center align-items-center" style="height: 900px;">
     <div class="white-box text-center" style="background-color: white; padding: 70px; width: 500px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
