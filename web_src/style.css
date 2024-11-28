@@ -132,6 +132,18 @@ h2 {
     font-size: 20px;
 }
 
+.navbar-nav .nav-link {
+    padding: 10px 20px;
+    color:black;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    background-color: #5a7f85; /* Darker shade for hover */
+    color: black;
+}
+
 /* Button styling */
 .rounded-square-button {
     background-color: rgb(210, 196, 212);

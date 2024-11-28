@@ -117,12 +117,8 @@ $conn->close();
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="../employee_dash.php">Profile</a></li>
                     <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
+                    <li class="nav-item"><a href="../../index.php" class="nav-link">Home</a></li>
                 </ul>
-            </div>
-
-            <!-- Home button on the far right -->
-            <a href="../../index.php" class="nav-link">Home</a>
-        </div>
     </nav>
     
 <!-- Main Content -->

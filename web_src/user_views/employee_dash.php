@@ -35,7 +35,7 @@ if ($stmtUser) {
 }
 
 $sql = "SELECT e.emp_id, e.first_name, e.last_name, e.job_title, e.department_id, e.email, e.mobile_no, 
-               d.dept_name, e.salary 
+               d.dept_name, e.salary, e.hire_date
         FROM employees e 
         JOIN departments d ON e.department_id = d.dept_id 
         WHERE e.email = ?";
@@ -102,48 +102,29 @@ if (!$employee) {
             
         </div>
     </nav>
+    <br>
     <!-- Employee Dashboard -->
     <h4>Welcome to your dashboard, <strong><?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></strong>!</h4>
     <p>Your role: <strong><?php echo htmlspecialchars($employee['job_title']); ?></strong></p><br><br>
 
 
-<!-- Employee Information Table -->
+ <!-- Employee Information Card -->
+ <section style="display: flex; justify-content: center; margin-bottom: 20px;">
+    <div class="card" style="width: 60%; padding: 20px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+      <h5 class="card-title" style="text-align: center;"><strong>Your Information</strong></h5>
+      <ul style="list-style: none; padding-left: 0;">
+        <li><strong>Full Name:</strong> <?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></li>
+        <li><strong>Job Title:</strong> <?php echo htmlspecialchars($employee['job_title']); ?></li>
+        <li><strong>Department:</strong> <?php echo htmlspecialchars($employee['dept_name']); ?></li>
+        <li><strong>Email:</strong> <?php echo htmlspecialchars($employee['email']); ?></li>
+        <li><strong>Phone:</strong> <?php echo htmlspecialchars($employee['mobile_no']); ?></li>
+        <li><strong>Salary:</strong> <?php echo htmlspecialchars("$" . number_format($employee['salary'], 2)); ?></li>
+        <li><strong>Hire Date:</strong> <?php echo htmlspecialchars($employee['hire_date']); ?></li>
+      </ul>
+    </div>
+  </section>
 
-<section style="display: flex; justify-content: center; margin-bottom: 20px;">
-        <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: left; width: 60%;">
-            <thead style="background-color: #f2f2f2;">
-                <tr>
-                    <th colspan="2" style="text-align: center;">Your Information</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th style="border: 1px solid #000;">Full Name</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['first_name'] . " " . $employee['last_name']); ?></td>
-                </tr>
-                <tr>
-                    <th style="border: 1px solid #000;">Job Title</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['job_title']); ?></td>
-                </tr>
-                <tr>
-                    <th style="border: 1px solid #000;">Department</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['dept_name']); ?></td>
-                </tr>
-                <tr>
-                    <th style="border: 1px solid #000;">Email</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['email']); ?></td>
-                </tr>
-                <tr>
-                    <th style="border: 1px solid #000;">Phone</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars($employee['mobile_no']); ?></td>
-                </tr>
-                <tr>
-                    <th style="border: 1px solid #000;">Salary</th>
-                    <td style="border: 1px solid #000;"><?php echo htmlspecialchars("$" . number_format($employee['salary'], 2)); ?></td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+
     <section style="text-align: center; margin-top: 20px;">
         <h3>Announcements</h3>
         <p><strong>Upcoming Holiday:</strong> The office will be closed on December 25th for Christmas.</p>

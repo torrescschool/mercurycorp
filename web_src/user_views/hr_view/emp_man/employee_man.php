@@ -9,7 +9,7 @@ if ($conn->connect_error) {
 }
 
 // Fetch all employees (nurses and other roles)
-$sql = "SELECT e.emp_id, e.first_name, e.last_name, e.job_title, e.department_id, e.email, e.salary, d.dept_name, e.dob 
+$sql = "SELECT e.emp_id, e.first_name, e.last_name, e.job_title, e.department_id, e.email, e.salary, d.dept_name, e.dob, e.hire_date
         FROM employees e JOIN departments d ON e.department_id = d.dept_id";
 $result = $conn->query($sql);
 
@@ -54,7 +54,7 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
           <img class="main_logo" src="../../../photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
         </div>
         <div class="col">
-          <h1 class = "abril-fatface-regular">Mercury Corp</h1>
+          <h1 class = "abril-fatface-regular">Mercury</h1>
         </div>
       </header>  
       <nav class="navbar navbar-expand-lg" style="background-color: rgb(133, 161, 170); height: 70px;">
@@ -64,7 +64,7 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
             <div class="collapse navbar-collapse" id="navbarNav">
             <h3>Employee Management</h3>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../../../index.html" class="btn btn-light ms-2">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../logout.php">Logout</a></li>
                 </ul>
             </div>
@@ -72,7 +72,7 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
             
         </div>
     </nav>
-
+    <br>
 
 <!-- Search / Filter form -->
 <!-- <form method="GET" action="">
@@ -86,11 +86,18 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
     <button type="submit">Filter</button>
 </form> <br><br> -->
 
-<br>
-<form method="GET" action="">
-    <input type="text" name="search" placeholder="Search by name">
-    <button type="submit">Search</button>
+<div class="d-flex justify-content-between" style="margin-bottom: 20px;">
+    <!-- Search Form -->
+    <form method="GET" action="" class="search-form" style="max-width: 400px;">
+    <input type="text" name="search" placeholder="Search by name" class="form-control" style="display: inline-block; width: 70%; margin-right: 10px;">
+    <button type="submit" style="border-radius: 12px; display: inline-block;">Search</button>
 </form>
+
+    <!-- Add New Employee Button -->
+    <form action="create_employee.php" method="get">
+        <button type="submit" style="border-radius: 12px;" >Add New Employee</button>
+    </form>
+</div>
 
 <?php
 // Handle Search
@@ -112,18 +119,15 @@ if (isset($_GET['search'])) {
 }
  ?>
 <!-- Statistics Section -->
-<h4>Overview</h4>
-<ul>
-    <li>Total Employees: <?php echo $totalEmployees; ?></li>
-    <li>Average Salary: <?php echo number_format($averageSalary, 2); ?> USD</li>
-</ul>
-
-<!-- Add New Employee Button -->
-<a href="create_employee.php">Add New Employee</a>
+<div class="statistics">
+    <h4>Overview</h4>
+    <div class="stat-item">Total Employees: <?php echo $totalEmployees; ?></div>
+    <div class="stat-item">Average Salary: <?php echo number_format($averageSalary, 2); ?> USD</div>
+</div>
 
 <br><br>
 <!-- Employee Table -->
-<table border="1" cellpadding="5" cellspacing="0">
+<table class="table table-striped table-bordered mt-4">
     <thead>
         <tr>
             <th>Name</th>
@@ -133,13 +137,12 @@ if (isset($_GET['search'])) {
             <th>Email</th>
             <th>Date of Birth</th>
             <th>Age</th>
+            <th>Hire Date</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         <?php foreach ($employees as $employee): 
-          
-            // Calculate Age
             $dob = new DateTime($employee['dob']);
             $today = new DateTime();
             $age = $employee['dob'] ? $today->diff($dob)->y : "N/A";
@@ -152,9 +155,8 @@ if (isset($_GET['search'])) {
                 <td><?php echo htmlspecialchars($employee['email']); ?></td>
                 <td><?php echo htmlspecialchars($employee['dob']); ?></td>
                 <td><?php echo htmlspecialchars($age); ?></td>
-                <td>
-                    <a href="update_employee.php?emp_id=<?php echo $employee['emp_id']; ?>">Edit</a>
-                </td>
+                <td><?php echo htmlspecialchars($employee['hire_date']); ?></td>
+                <td><a href="update_employee.php?emp_id=<?php echo $employee['emp_id']; ?>" class="btn btn-warning">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
