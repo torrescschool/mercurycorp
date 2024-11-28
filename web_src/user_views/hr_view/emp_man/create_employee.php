@@ -158,6 +158,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <a href="https://github.com/Mildred1999">
   <img class="socialMediaIcon" src="../../../photos/twitter.png" alt="Twitter">
 </a>
-</footer> -
+</footer> 
 </body>
 </html>

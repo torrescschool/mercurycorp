@@ -64,8 +64,9 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
             <div class="collapse navbar-collapse" id="navbarNav">
             <h3>Employee Management</h3>
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="../hr_dash.php">HR Dash</a></li>
                     <li class="nav-item"><a class="nav-link" href="../../../index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../../logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../logout.php">Logout</a></li>
                 </ul>
             </div>
 
@@ -127,7 +128,7 @@ if (isset($_GET['search'])) {
 
 <br><br>
 <!-- Employee Table -->
-<table class="table table-striped table-bordered mt-4">
+<table class="table table-striped table-bordered mt-4" >
     <thead>
         <tr>
             <th>Name</th>
@@ -151,12 +152,12 @@ if (isset($_GET['search'])) {
                 <td><?php echo htmlspecialchars($employee['first_name']) . " " . htmlspecialchars($employee['last_name']); ?></td>
                 <td><?php echo htmlspecialchars($employee['job_title']); ?></td>
                 <td><?php echo htmlspecialchars($employee['dept_name']); ?></td>
-                <td><?php echo htmlspecialchars($employee['salary']); ?></td>
+                <td>$<?php echo number_format($employee['salary'], 2); ?></td>
                 <td><?php echo htmlspecialchars($employee['email']); ?></td>
                 <td><?php echo htmlspecialchars($employee['dob']); ?></td>
                 <td><?php echo htmlspecialchars($age); ?></td>
                 <td><?php echo htmlspecialchars($employee['hire_date']); ?></td>
-                <td><a href="update_employee.php?emp_id=<?php echo $employee['emp_id']; ?>" class="btn btn-warning">Edit</a></td>
+                <td><a href="#" class="btn btn-warning">Edit</a></td>
             </tr>
         <?php endforeach; ?>
     </tbody>
@@ -165,9 +166,15 @@ if (isset($_GET['search'])) {
 <footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
   <p>Follow us on social media!</p>
-  <img class = "socialMediaIcon" src = "../../../photos/facebook.png" alt = "Facebook">
-  <img class = "socialMediaIcon" src = "../../../photos/instagram.png" alt = "Instagram">
-  <img class = "socialMediaIcon" src = "../../../photos/twitter.png" alt = "Twitter">
+    <a href="https://github.com/Laneyeh">
+  <img class="socialMediaIcon" src="../../../photos/facebook.png" alt="Facebook">
+</a>
+<a href="https://github.com/torrescschool">
+  <img class="socialMediaIcon" src="../../../photos/instagram.png" alt="Instagram">
+</a>
+<a href="https://github.com/Mildred1999">
+  <img class="socialMediaIcon" src="../../../photos/twitter.png" alt="Twitter">
+</a>
 </footer>
 </body>
 </html>

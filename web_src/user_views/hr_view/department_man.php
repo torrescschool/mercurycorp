@@ -116,7 +116,7 @@ if (isset($_GET['dept_id']) && !empty($_GET['dept_id'])) {
 
 <!-- Departments Table -->
 <div style="display: flex; justify-content: center;">
-    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: center; width: 80%;">
+    <table border="1" cellpadding="10" cellspacing="0" style="border-collapse: collapse; text-align: center; width: 80%;" >
         <thead>
             <tr style="background-color: #f2f2f2;">
                 <th style="border: 1px solid #000;">Department ID</th>
@@ -137,7 +137,7 @@ if (isset($_GET['dept_id']) && !empty($_GET['dept_id'])) {
                         <td style="border: 1px solid #000;"> 
                             <form method="GET" action="">
                             <input type="hidden" name="dept_id" value="<?php echo $department['dept_id']; ?>">
-                            <button type="submit">View Employees</button>
+                            <button  type="submit">View Employees</button>
                             </form>
                         </td>
                     </tr>
@@ -182,9 +182,15 @@ if (isset($_GET['dept_id']) && !empty($_GET['dept_id'])) {
 <footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
   <p>Follow us on social media!</p>
-  <img class = "socialMediaIcon" src = "../../photos/facebook.png" alt = "Facebook">
-  <img class = "socialMediaIcon" src = "../../photos/instagram.png" alt = "Instagram">
-  <img class = "socialMediaIcon" src = "../../photos/twitter.png" alt = "Twitter">
+    <a href="https://github.com/Laneyeh">
+  <img class="socialMediaIcon" src="../../photos/facebook.png" alt="Facebook">
+</a>
+<a href="https://github.com/torrescschool">
+  <img class="socialMediaIcon" src="../../photos/instagram.png" alt="Instagram">
+</a>
+<a href="https://github.com/Mildred1999">
+  <img class="socialMediaIcon" src="../../photos/twitter.png" alt="Twitter">
+</a>
 </footer>
 </body>
 </html>
