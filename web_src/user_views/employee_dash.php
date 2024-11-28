@@ -82,7 +82,7 @@ if (!$employee) {
           <img class="main_logo" src="../photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
         </div>
         <div class="col">
-          <h1 class = "abril-fatface-regular">Mercury Corp</h1>
+          <h1 class = "abril-fatface-regular">Mercury</h1>
         </div>
       </header>  
       <nav class="navbar navbar-expand-lg" style="background-color: rgb(133, 161, 170); height: 70px;">
@@ -92,7 +92,7 @@ if (!$employee) {
             <div class="collapse navbar-collapse" id="navbarNav">
             <h3>Employee Dashboard</h3>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="logout.php">Logout</a></li>
                 </ul>
             </div>

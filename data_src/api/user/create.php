@@ -140,12 +140,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           <img class="main_logo" src="../../../web_src/photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
         </div>
         <div class="col">
-          <h1 class = "abril-fatface-regular">Mercury Corp</h1>
+          <h1 class = "abril-fatface-regular">Mercury</h1>
         </div>
       </header>      
       <nav class="navbar" style="background-color: rgb(133, 161,170); height: 70px">
         <!-- Navbar content -->
-        <a id = "nav-bar options" href = "../../../web_src/index.html" class = "arima-subtitle">Home</a>
+        <a id = "nav-bar options" href = "../../../web_src/index.php" class = "arima-subtitle">Home</a>
         <!-- <a id = "nav-bar options" href = "Residents.html" class = "arima-subtitle">Residents</a>
         <a id = "nav-bar options" href = "login.html" class = "arima-subtitle">Login</a> -->
       </nav>
@@ -171,7 +171,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         
                 <button type="submit" class="btn btn-primary w-100" >Create User</button>
                 <br><br><br>
-                <a href="../../../web_src/login.html">Back to Log In</a>
+                <a href="../../../web_src/login.php">Back to Log In</a>
 
                 <!-- Display message inside the div -->
                 <?php if (!empty($message)) : ?>

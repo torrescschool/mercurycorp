@@ -221,3 +221,18 @@ INSERT INTO residents
 (res_id,first_name, last_name, dob, mailing_address, physician_id,account_id, ssn, emergency_contact, care_id, rec_id, unit_id, address)
 VALUES
 ('R002','Joys', 'Munchkin', '1960-12-09', '13 Alpha Street', 02, 2, 347878801, 2126579999,2,2,1,'E');
+
+ALTER TABLE employees
+ADD hire_date DATE;
+
+UPDATE employees
+SET hire_date = '2021-11-01'
+WHERE emp_id = 0001; 
+
+UPDATE employees
+SET hire_date = '2021-06-15'
+WHERE emp_id = 0002;
+
+UPDATE employees
+SET hire_date = '2019-10-15'
+WHERE emp_id = 0003;

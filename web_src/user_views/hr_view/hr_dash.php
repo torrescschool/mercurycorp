@@ -94,7 +94,7 @@ $conn->close();
           <img class="main_logo" src="../../photos/mercuryCorpLogo.png" alt="MercuryCorp logo">
         </div>
         <div class="col">
-          <h1 class = "abril-fatface-regular">Mercury Corp</h1>
+          <h1 class = "abril-fatface-regular">Mercury</h1>
         </div>
       </header>  
 <!-- Navbar -->
@@ -121,7 +121,7 @@ $conn->close();
             </div>
 
             <!-- Home button on the far right -->
-            <a href="../../index.html" class="btn btn-light ms-2">Home</a>
+            <a href="../../index.php" class="nav-link">Home</a>
         </div>
     </nav>
     
