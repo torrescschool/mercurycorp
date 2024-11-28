@@ -86,6 +86,31 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
     <button type="submit">Filter</button>
 </form> <br><br> -->
 
+<br>
+<form method="GET" action="">
+    <input type="text" name="search" placeholder="Search by name">
+    <button type="submit">Search</button>
+</form>
+
+<?php
+// Handle Search
+if (isset($_GET['search'])) {
+    $search = $conn->real_escape_string($_GET['search']);
+    $query = "SELECT * FROM employees WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'";
+    $search_result = $conn->query($query);
+
+    if ($search_result && $search_result->num_rows > 0) {
+        echo "<h3>Search Results:</h3>";
+        echo "<ul>";
+        while ($row = $search_result->fetch_assoc()) {
+            echo "<li>" . htmlspecialchars($row['first_name'] . " " . $row['last_name']) . "</li>";
+        }
+        echo "</ul>";
+    } else {
+        echo "<p>No employees found.</p>";
+    }
+}
+ ?>
 <!-- Statistics Section -->
 <h4>Overview</h4>
 <ul>
@@ -135,11 +160,6 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
     </tbody>
 </table><br><br>
 
-<form method="GET" action="">
-    <input type="text" name="search" placeholder="Search by name or ID">
-    <button type="submit">Search</button>
-</form>
-
 <footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
   <p>Follow us on social media!</p>
@@ -151,22 +171,4 @@ $averageSalary = $conn->query("SELECT AVG(salary) AS average FROM employees")->f
 </html>
 
 
-<?php
-// Handle Search
-if (isset($_GET['search'])) {
-    $search = $conn->real_escape_string($_GET['search']);
-    $query = "SELECT * FROM employees WHERE first_name LIKE '%$search%' OR last_name LIKE '%$search%'";
-    $search_result = $conn->query($query);
 
-    if ($search_result && $search_result->num_rows > 0) {
-        echo "<h3>Search Results:</h3>";
-        echo "<ul>";
-        while ($row = $search_result->fetch_assoc()) {
-            echo "<li>" . htmlspecialchars($row['first_name'] . " " . $row['last_name']) . "</li>";
-        }
-        echo "</ul>";
-    } else {
-        echo "<p>No employees found.</p>";
-    }
-}
- ?>
