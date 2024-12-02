@@ -1,16 +1,18 @@
 <?php
 include('db_queries.php');
-include('../head.php');
+
 include('../navbarFunctions.php');
+include('../head.php');
 ?>
 <body>
     <?PHP
     include('../header.php');
-    include('../navbar2.php');
+    include('navbar2.php');
     ?>
     <!-- Welcome Message -->
     <div class="container mt-4">
         <h2 class="text-center">Welcome, <?php echo htmlspecialchars($_SESSION['username'] ?? 'Nurse'); ?>!</h2>
+
         <!-- Today's Tasks Section -->
         <section class="my-4">
             <h3>Today's Tasks</h3>
