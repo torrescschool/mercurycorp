@@ -94,7 +94,7 @@ try {
     $stmt->execute();
 
     // Redirect back to the dashboard with a success message
-    header("Location: /mercurycorp/mercurycorp/web_src/user_views/nurse_dash.php?success=1");
+    header("Location: mercurycorp/web_src/user_views/nurse_dash.php?success=1");
     exit;
 
 } catch (PDOException $e) {
