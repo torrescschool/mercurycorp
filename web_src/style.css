@@ -124,6 +124,7 @@ h2 {
 
 /* Navbar styling */
 .navbar {
+    text-decoration: none;
     background-color: rgb(133, 161, 170);
     height: 70px;
     display: flex;
@@ -133,6 +134,7 @@ h2 {
 }
 
 .navbar-nav .nav-link {
+    text-decoration: none;
     padding: 10px 20px;
     color:black;
     text-decoration: none;
@@ -140,6 +142,7 @@ h2 {
 }
 
 .navbar-nav .nav-link:hover {
+    text-decoration: none;
     background-color: #5a7f85; /* Darker shade for hover */
     color: black;
 }
