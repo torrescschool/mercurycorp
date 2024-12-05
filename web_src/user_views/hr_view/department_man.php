@@ -97,7 +97,7 @@ if (isset($_GET['dept_id']) && !empty($_GET['dept_id'])) {
             <h4>Department Management</h4>
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="hr_dash.php">HR Dash</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../../index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../../index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="../logout.php">Logout</a></li>
                 </ul>
             </div>

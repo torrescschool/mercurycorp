@@ -37,7 +37,7 @@ try {
     // Query to fetch recent physician orders
     $stmt = $pdo->prepare("SELECT order_id, rec_id, order_date, order_text, physician_id 
                            FROM physician_orders
-                           ORDER BY order_date DESC 
+                           ORDER BY order_id DESC 
                            LIMIT 10");
     $stmt->execute();
     $recentOrders = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -279,7 +279,7 @@ try {
     <!-- Form to create a new physician order -->
     <div class = "form-container">
     <h2>Create Physician Order</h2>
-    <form action="/mercurycorp/mercurycorp/data_src/api/mar_tar/create_order.php" method="POST">
+    <form action="../../data_src/api/mar_tar/create_order.php" method="POST">
 
         <label for="medication">Medication:</label>
         <input type="text" name="medication" required>
@@ -361,7 +361,7 @@ try {
 </table>
     </div>
         <br></br>
-        <footer>
+<footer>
   <p> 2024 Mercury Corp. All rights reserved.</p>
   <p>Follow us on social media!</p>
     <a href="https://github.com/Laneyeh">
