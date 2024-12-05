@@ -26,9 +26,7 @@ include("head.php");
               <img class="img-fluid rounded" src="photos/stock2.jpg" alt="Photo 2">
             </div>
           </div>
-          <?PHP
-      include("footer.php");
-      ?> 
+     
       </main>
       
     
