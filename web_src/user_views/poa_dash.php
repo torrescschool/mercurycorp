@@ -30,3 +30,6 @@
     <a href="/public/index.php">Logout</a>
 </body>
 </html>
+<?PHP
+    include "../footer.php";
+?>
