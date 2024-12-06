@@ -128,7 +128,7 @@ $conn->close();
 
 <div class="row text-center my-4">
     <div class="col-md-3">
-        <div class="card bg-primary text-white">
+        <div class="card" style="background-color: #5a7f85; color: #fdf8ef;">
             <div class="card-body">
                 <h5>Total Employees</h5>
                 <h3><?php echo htmlspecialchars($totalEmployees); ?></h3>
@@ -136,7 +136,7 @@ $conn->close();
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-success text-white">
+        <div class="card" style="background-color: rgba(98, 75, 182, 0.667); color: #fdf8ef;" >
             <div class="card-body">
                 <h5>Departments</h5>
                 <h3><?php echo htmlspecialchars($totalDepartments); ?></h3>
@@ -144,7 +144,7 @@ $conn->close();
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-warning text-white">
+        <div class="card" style="background-color: #5a7f85; color: #fdf8ef;">
             <div class="card-body">
                 <h5>Open Positions</h5>
                 <h3>5</h3>
@@ -152,7 +152,7 @@ $conn->close();
         </div>
     </div>
     <div class="col-md-3">
-        <div class="card bg-danger text-white">
+        <div class="card" style="background-color: rgba(98, 75, 182, 0.667); color: #fdf8ef;">
             <div class="card-body">
                 <h5>Pending Leave Requests</h5>
                 <h3>12</h3>
